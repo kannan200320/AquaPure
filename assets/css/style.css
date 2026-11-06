@@ -1,0 +1,349 @@
+/* ==========================================================================
+   AquaPure - Overhead Tank & Sump Cleaning Service
+   Custom Stylesheet, Animations, RTL Engine & Theme Overrides
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --color-primary: #0284c7;
+  --color-primary-dark: #0369a1;
+  --color-secondary: #0d9488;
+  --color-accent: #06b6d4;
+}
+
+body {
+  font-family: var(--font-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ==========================================================================
+   CRITICAL TEXT COLOR ENFORCEMENT
+   In Light Mode: Black text only (no gray)
+   In Dark Mode: White text only (no gray)
+   ========================================================================== */
+html:not(.dark) {
+  color: #000000;
+}
+
+html:not(.dark) p,
+html:not(.dark) span:not(.badge-colored):not(.text-cyan-600):not(.text-teal-600):not(.text-sky-600),
+html:not(.dark) label,
+html:not(.dark) li,
+html:not(.dark) dt,
+html:not(.dark) dd,
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  color: #000000;
+}
+
+html.dark {
+  color: #ffffff;
+}
+
+html.dark p,
+html.dark span:not(.badge-colored):not(.text-cyan-400):not(.text-teal-400):not(.text-sky-400):not(.btn-text):not(button *):not(a *),
+html.dark label,
+html.dark li,
+html.dark dt,
+html.dark dd,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #ffffff;
+}
+
+/* Ensure button and link text ALWAYS inherit their intended button color */
+html.dark button span,
+html.dark a span,
+html.dark .btn-text {
+  color: inherit !important;
+}
+
+/* Critical Rule: Buttons or links with white or light backgrounds MUST have dark, crisp, visible text in Dark Mode */
+html.dark a.bg-white:not([class*="dark:bg"]),
+html.dark a.bg-white:not([class*="dark:bg"]) span,
+html.dark button.bg-white:not([class*="dark:bg"]),
+html.dark button.bg-white:not([class*="dark:bg"]) span,
+html.dark .bg-white:not([class*="dark:bg"]) > span,
+html.dark [class*="bg-white"]:not([class*="dark:bg"]) > a > span,
+html.dark a[class*="bg-white"]:not([class*="dark:bg"]) {
+  color: #042f2e !important; /* Deep rich contrast text on white buttons */
+}
+
+/* Allow accented text to shine while keeping text legible */
+html:not(.dark) .text-accent-primary {
+  color: #0284c7 !important;
+}
+html.dark .text-accent-primary {
+  color: #38bdf8 !important;
+}
+html:not(.dark) .text-accent-teal {
+  color: #0d9488 !important;
+}
+html.dark .text-accent-teal {
+  color: #2dd4bf !important;
+}
+
+/* ==========================================================================
+   RTL Rules & Layout Synchronization
+   ========================================================================== */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
+[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1 !important;
+}
+
+[dir="rtl"] .ltr-only {
+  display: none !important;
+}
+
+[dir="ltr"] .rtl-only {
+  display: none !important;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* ==========================================================================
+   Custom Animations
+   ========================================================================== */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes waterRipple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.7);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: waterRipple 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #07131f;
+}
+::-webkit-scrollbar-thumb {
+  background: #0284c7;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0369a1;
+}
+
+/* Mobile Menu Drawer Styling & Transitions (Right-Side Drawer, Full Height, Zero Gap Below) */
+#mobile-menu {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  max-height: 100vh !important;
+  width: 290px !important;
+  max-width: 85vw !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  z-index: 100 !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease !important;
+  box-shadow: -10px 0 30px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+@media (min-width: 640px) {
+  #mobile-menu {
+    width: 330px !important;
+    max-width: 80vw !important;
+  }
+}
+
+#mobile-menu.hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+#mobile-menu.translate-x-full {
+  transform: translateX(100%) !important;
+  pointer-events: none !important;
+}
+
+#mobile-menu.translate-x-0 {
+  transform: translateX(0) !important;
+  pointer-events: auto !important;
+}
+
+#mobile-menu-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(2px) !important;
+  z-index: 99 !important;
+}
+
+/* Dashboard Sidebar Drawer on Mobile (Zero Gap Below) */
+@media (max-width: 1023px) {
+  #dashboard-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: 100% !important;
+    z-index: 100 !important;
+  }
+  
+  #dashboard-sidebar-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 99 !important;
+  }
+}
+
+/* Water drop decoration */
+.water-drop-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.water-drop-badge::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Toast Notification Styles */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+[dir="rtl"] #toast-container {
+  right: auto;
+  left: 24px;
+}
+
+.toast-item {
+  animation: slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInToast {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Print Styles for Dashboard Reports & Invoices */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  header, footer, #mobile-menu, #toast-container, .no-print {
+    display: none !important;
+  }
+  .printable-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}

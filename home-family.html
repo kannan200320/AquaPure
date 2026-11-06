@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Safe Home - Overhead Tank & Sump Sanitization | AquaPure</title>
+  <meta name="description" content="Niche family-safe overhead tank and sump cleaning. 100% chemical-free, food-grade bio-sanitizers, and UV-C sterilization designed for infant health, eczema prevention, and pure domestic water.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#f0f9ff] dark:bg-[#07131f] text-black dark:text-white min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#07131f]/95 backdrop-blur-md border-b border-sky-200 dark:border-sky-900 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <i class="fas fa-droplet text-xl"></i>
+          </div>
+          <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+            <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+            <span class="text-black dark:text-white">Pure</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+          <div class="relative nav-dropdown group py-4">
+            <button class="flex items-center gap-1.5 text-teal-600 dark:text-teal-400 font-bold focus:outline-none">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+            </button>
+            <div class="dropdown-menu hidden absolute top-full left-0 w-[350px] p-2.5 bg-white dark:bg-[#0c1e33] rounded-2xl shadow-2xl border border-sky-200 dark:border-sky-800 transition-all duration-200 space-y-1.5 z-50">
+              <a href="index.html" class="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-sky-50 dark:hover:bg-sky-950/60 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/80 border border-cyan-200 dark:border-cyan-800 flex items-center justify-center shrink-0">
+                  <i class="fas fa-city text-cyan-600 dark:text-cyan-400 text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-black dark:text-white leading-tight">AquaPure Landing</div>
+                  <div class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-tight mt-1 whitespace-nowrap">General Mechanized Cleaning & Tech</div>
+                </div>
+              </a>
+              <a href="home-family.html" class="flex items-center gap-3.5 p-2.5 rounded-xl bg-teal-50 dark:bg-teal-950/60 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 border border-teal-200 dark:border-teal-800 flex items-center justify-center shrink-0">
+                  <i class="fas fa-house-chimney-medical text-teal-600 dark:text-teal-400 text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-teal-600 dark:text-teal-400 leading-tight">Family Safe Home</div>
+                  <div class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-tight mt-1 whitespace-nowrap">Residential Water Health & Infant Care</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <a href="about.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About Us</a>
+          <a href="services.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Services</a>
+          <a href="pricing.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pricing</a>
+
+          <div class="relative nav-dropdown group py-4">
+            <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none">
+              <span>Explore</span>
+              <i class="fas fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+            </button>
+            <div class="dropdown-menu hidden absolute top-full left-0 w-[350px] p-2.5 bg-white dark:bg-[#0c1e33] rounded-2xl shadow-2xl border border-sky-200 dark:border-sky-800 transition-all duration-200 space-y-1.5 z-50">
+              <a href="book-service.html" class="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-sky-50 dark:hover:bg-sky-950/60 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/80 border border-cyan-200 dark:border-cyan-800 flex items-center justify-center shrink-0">
+                  <i class="fas fa-calendar-check text-cyan-600 dark:text-cyan-400 text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-black dark:text-white leading-tight">Book Service Page</div>
+                  <div class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-tight mt-1 whitespace-nowrap">Slot Selection & Capacity Estimator</div>
+                </div>
+              </a>
+              <a href="amc-membership.html" class="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-sky-50 dark:hover:bg-sky-950/60 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/80 border border-amber-200 dark:border-amber-800 flex items-center justify-center shrink-0">
+                  <i class="fas fa-award text-amber-500 text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-black dark:text-white leading-tight">AMC Membership</div>
+                  <div class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-tight mt-1 whitespace-nowrap">Annual Recurring Protection Plans</div>
+                </div>
+              </a>
+              <a href="service-details.html" class="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-sky-50 dark:hover:bg-sky-950/60 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/80 border border-teal-200 dark:border-teal-800 flex items-center justify-center shrink-0">
+                  <i class="fas fa-list-check text-teal-600 dark:text-teal-400 text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-black dark:text-white leading-tight">7-Stage Deep Clean</div>
+                  <div class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-tight mt-1 whitespace-nowrap">Detailed Operational Methodology</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <a href="blog.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Blog</a>
+          <a href="contact.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact Us</a>
+          <a href="dashboard.html" class="text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Dashboard</a>
+        </nav>
+
+                <!-- Right Side Utility Controls -->
+        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+            <i class="theme-toggle-icon fas fa-moon text-sm"></i>
+          </button>
+
+          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+            <i class="fas fa-arrow-right-arrow-left text-xs"></i>
+            <span class="rtl-toggle-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+            <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
+            <span>Sign In</span>
+          </a>
+
+          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+            <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER (Right Side Drawer - Matches Reference Image)
+       ========================================================================== -->
+  <!-- Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300"></div>
+
+  <!-- Off-Canvas Right Drawer -->
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-[290px] sm:w-[330px] max-w-[85vw] h-full h-screen h-[100dvh] bg-white dark:bg-[#07131f] border-l border-sky-200 dark:border-sky-800 z-50 flex flex-col justify-between shadow-2xl transform translate-x-full hidden transition-transform duration-300 overflow-hidden">
+    
+    <!-- Drawer Top Bar (Logo on left, Close X on right) -->
+    <div class="flex items-center justify-between px-5 pt-5 pb-3 border-b border-sky-100 dark:border-sky-800 shrink-0 bg-white dark:bg-[#07131f]">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+          <i class="fas fa-droplet text-base"></i>
+        </div>
+        <div class="flex items-center gap-1 text-xl font-black tracking-tight">
+          <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+          <span class="text-black dark:text-white">Pure</span>
+        </div>
+      </a>
+      <button id="mobile-menu-close" class="w-9 h-9 rounded-xl flex items-center justify-center text-black dark:text-white hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors" aria-label="Close Mobile Menu">
+        <i class="fas fa-xmark text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation List (Scrollable Middle Area) -->
+    <nav class="flex-1 overflow-y-auto px-5 py-3 space-y-1">
+      
+      <!-- 1. Home (Dropdown Accordion) -->
+      <div>
+        <button class="mobile-dropdown-btn w-full flex items-center justify-between py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors text-left">
+          <span>Home</span>
+          <i class="fas fa-chevron-down text-xs text-black/60 dark:text-white/60 mobile-dropdown-arrow transition-transform duration-200"></i>
+        </button>
+        <div class="hidden pl-3 pr-1 py-1 space-y-1">
+          <a href="index.html" class="block p-2 rounded-xl bg-sky-50 dark:bg-[#0c1e33] text-sm font-semibold text-cyan-600 dark:text-cyan-400 transition-colors">
+            AquaPure Landing
+          </a>
+          <a href="home-family.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            Family Safe Home
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. About Us -->
+      <a href="about.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        About Us
+      </a>
+
+      <!-- 3. Services -->
+      <a href="services.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Services
+      </a>
+
+      <!-- 4. Pricing -->
+      <a href="pricing.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Pricing
+      </a>
+
+      <!-- 5. Explore (Dropdown Accordion) -->
+      <div>
+        <button class="mobile-dropdown-btn w-full flex items-center justify-between py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors text-left">
+          <span>Explore</span>
+          <i class="fas fa-chevron-down text-xs text-black/60 dark:text-white/60 mobile-dropdown-arrow transition-transform duration-200"></i>
+        </button>
+        <div class="hidden pl-3 pr-1 py-1 space-y-1">
+          <a href="book-service.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            Book Service Page
+          </a>
+          <a href="amc-membership.html" class="block p-2 rounded-xl bg-cyan-50/70 dark:bg-[#0c1e33] border border-cyan-200 dark:border-cyan-800 text-sm font-semibold text-cyan-600 dark:text-cyan-400 transition-colors">
+            AMC Membership
+          </a>
+          <a href="service-details.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            7-Stage Deep Clean
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Blog -->
+      <a href="blog.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Blog
+      </a>
+
+      <!-- 7. Contact Us -->
+      <a href="contact.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Contact Us
+      </a>
+
+      <!-- 8. Dashboard -->
+      <a href="dashboard.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Dashboard
+      </a>
+
+    </nav>
+
+    <!-- Bottom Actions: Sign In / Register + Mobile Settings (Pinned to Bottom, Zero Gap Below) -->
+    <div class="px-5 pt-3 pb-6 border-t border-sky-100 dark:border-sky-800 space-y-3 shrink-0 bg-white dark:bg-[#07131f]">
+      <a href="login-register.html" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white font-black text-center text-sm shadow-md block transition-all active:scale-[0.99]">
+        Sign In / Register
+      </a>
+
+      <!-- Mobile Settings Toggles -->
+      <div class="flex items-center justify-between pt-2 border-t border-sky-100 dark:border-sky-800 text-sm font-bold text-black dark:text-white">
+        <span>Settings:</span>
+        <div class="flex items-center gap-2">
+          <button class="theme-toggle w-10 h-10 rounded-2xl bg-sky-100 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex items-center justify-center text-black dark:text-white hover:border-cyan-500 transition-all shadow-sm" title="Toggle Light / Dark Mode">
+            <i class="theme-toggle-icon fas fa-moon text-sm"></i>
+          </button>
+          <button class="rtl-toggle px-3.5 py-2 rounded-2xl bg-sky-100 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex items-center gap-1.5 text-xs font-bold text-black dark:text-white hover:border-cyan-500 transition-all shadow-sm" title="Toggle RTL / LTR">
+            <i class="fas fa-arrow-left text-xs"></i>
+            <span class="rtl-toggle-text">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="relative overflow-hidden py-16 lg:py-24 bg-teal-50 dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900">
+    <!-- Hero Background Image (Happy Mother & Child Safe Bathing Water) -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="assets/images/hero-home2-bg.png" alt="Happy Mother and Infant in Clean Bath Water" class="w-full h-full object-cover object-center filter saturate-[1.65] contrast-[1.12] brightness-[1.02] dark:saturate-110 dark:contrast-100 dark:brightness-100">
+      <!-- Adaptive Contrast Overlays: vibrant full-color image in light mode while ensuring 100% text legibility -->
+      <div class="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent dark:hidden"></div>
+      <div class="hidden dark:block absolute inset-0 bg-gradient-to-r from-[#07131f]/95 via-[#07131f]/80 to-[#07131f]/60"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-transparent backdrop-blur-[2px] dark:backdrop-blur-none border border-teal-200/70 dark:border-transparent shadow-lg dark:shadow-none">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-md border border-teal-400 dark:border-teal-600 text-black dark:text-white text-xs sm:text-sm font-black shadow-md">
+            <i class="fas fa-shield-heart text-teal-600 dark:text-teal-400"></i>
+            <span>Pediatric-Approved Chemical-Free Sanitization</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-black dark:text-white">
+            Pure Water For Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600">Children & Parents.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg font-bold leading-relaxed text-black dark:text-white max-w-2xl">
+            Did you know that children accidentally ingest bathwater, and sensitive baby skin absorbs up to 60% of dissolved tank contaminants? Our Family Safe protocol uses 100% organic, non-toxic bio-sanitizers and germicidal UV lamps. No pungent bleach smells, no harsh chemicals.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="book-service.html" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold text-base shadow-xl shadow-teal-600/25 transition-all">
+              <i class="fas fa-baby"></i>
+              <span>Schedule Family Safe Clean</span>
+            </a>
+            <a href="#water-health-quiz" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-300 dark:border-sky-700 text-black dark:text-white font-bold text-base shadow-sm hover:bg-sky-50 dark:hover:bg-sky-900 transition-all">
+              <i class="fas fa-stethoscope text-teal-600 dark:text-teal-400"></i>
+              <span>Take Water Health Quiz</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-teal-300 dark:border-teal-800">
+            <div class="p-3 sm:p-4 rounded-2xl bg-white/85 dark:bg-[#0c1e33]/85 backdrop-blur-md border border-teal-200 dark:border-teal-800 shadow-md">
+              <div class="text-2xl sm:text-3xl font-black text-teal-600 dark:text-teal-400">0%</div>
+              <div class="text-xs sm:text-sm font-bold text-black dark:text-white">Chlorine Bleach</div>
+            </div>
+            <div class="p-3 sm:p-4 rounded-2xl bg-white/85 dark:bg-[#0c1e33]/85 backdrop-blur-md border border-teal-200 dark:border-teal-800 shadow-md">
+              <div class="text-2xl sm:text-3xl font-black text-black dark:text-white">100%</div>
+              <div class="text-xs sm:text-sm font-bold text-black dark:text-white">Bio-Organic</div>
+            </div>
+            <div class="p-3 sm:p-4 rounded-2xl bg-white/85 dark:bg-[#0c1e33]/85 backdrop-blur-md border border-teal-200 dark:border-teal-800 shadow-md">
+              <div class="text-2xl sm:text-3xl font-black text-cyan-600 dark:text-cyan-400">30 Days</div>
+              <div class="text-xs sm:text-sm font-bold text-black dark:text-white">Purity Guarantee</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-teal-200 dark:border-teal-800 shadow-2xl space-y-6">
+            <div class="flex items-center gap-3 pb-4 border-b border-sky-100 dark:border-sky-800">
+              <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 flex items-center justify-center text-teal-600 dark:text-teal-400 text-lg">
+                <i class="fas fa-house-chimney-user"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-black dark:text-white">Family Safe Home Pack</h3>
+                <p class="text-xs font-medium text-black dark:text-white">Overhead Tank + Sump + Bathroom Pipeline Flush</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="p-4 rounded-xl bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-bold text-teal-800 dark:text-teal-200">Complete Home Protection</div>
+                  <div class="text-2xl font-black text-black dark:text-white">\$69.00 <span class="text-xs font-normal">all inclusive</span></div>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-teal-600 text-white text-xs font-bold">Best For Families</span>
+              </div>
+
+              <ul class="space-y-2 text-xs font-semibold text-black dark:text-white pt-2">
+                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Overhead Rooftop Tank 7-Stage Deep Clean</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Underground Sump Sludge Extraction</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Non-Toxic Potassium Permanganate Mist</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> UV-C Light Pathogen Inactivation</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Certified Lead, TDS & Bacterial Lab Card</li>
+              </ul>
+            </div>
+
+            <a href="book-service.html" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 hover:from-teal-700 hover:to-cyan-700 transition-all">
+              <span>Book Family Safe Clean Today</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <div class="text-center text-xs font-medium text-black dark:text-white">
+              <i class="fas fa-lock text-teal-500 mr-1"></i> No upfront credit card required. Pay upon completion.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Key Family Water Stats -->
+  <section class="py-10 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+          <div class="text-3xl font-black text-teal-600 dark:text-teal-400">30%</div>
+          <div class="text-sm font-bold text-black dark:text-white mt-1">Thinner Infant Skin</div>
+          <p class="text-xs font-medium text-black dark:text-white mt-1">Absorbs contaminants faster during baths</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+          <div class="text-3xl font-black text-cyan-600 dark:text-cyan-400">0%</div>
+          <div class="text-sm font-bold text-black dark:text-white mt-1">Caustic Bleaching Agents</div>
+          <p class="text-xs font-medium text-black dark:text-white mt-1">Zero harmful chloramines or toxic vapors</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+          <div class="text-3xl font-black text-teal-600 dark:text-teal-400">99.9%</div>
+          <div class="text-sm font-bold text-black dark:text-white mt-1">Germicidal Kill Rate</div>
+          <p class="text-xs font-medium text-black dark:text-white mt-1">Destroys rotavirus, E.coli, and amoeba</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+          <div class="text-3xl font-black text-cyan-600 dark:text-cyan-400">10 Min</div>
+          <div class="text-sm font-bold text-black dark:text-white mt-1">Refill Ready Window</div>
+          <p class="text-xs font-medium text-black dark:text-white mt-1">Safe to fill and drink immediately</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Pediatric Water Hazards -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Child & Elder Health Risk</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white mt-1">Why Rooftop Tank Sludge Is Risky For Children</h2>
+        <p class="text-base font-medium text-black dark:text-white mt-3">
+          Children's skin is 30% thinner than adult skin and absorbs environmental toxins much faster during everyday bathing, brushing, and rinsing.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/infant-eczema-rashes.jpg" alt="Infant Eczema and Skin Rashes Prevention" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-teal-600 dark:text-teal-400 flex items-center justify-center text-lg font-bold shadow-md">
+              <i class="fas fa-hand-dots"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-lg font-bold text-black dark:text-white">Infant Eczema & Skin Rashes</h3>
+            <p class="text-sm font-medium text-black dark:text-white leading-relaxed">
+              Stagnant tank biofilm harbors Pseudomonas and fungal colonies that trigger stubborn baby eczema, itchy scalp, and severe allergic flare-ups.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/aerosol-shower-inhalation.png" alt="Aerosol Shower Inhalation Risks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-lg font-bold shadow-md">
+              <i class="fas fa-head-side-cough"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-lg font-bold text-black dark:text-white">Aerosol Shower Inhalation</h3>
+            <p class="text-sm font-medium text-black dark:text-white leading-relaxed">
+              Hot water showers atomize tank microbes into fine airborne water droplets, causing Legionella and respiratory wheezing in kids and seniors.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/baby-bottle-food-washing.jpg" alt="Baby Bottle & Food Washing Hygiene" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg font-bold shadow-md">
+              <i class="fas fa-bottle-droplet"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-lg font-bold text-black dark:text-white">Baby Bottle & Food Washing</h3>
+            <p class="text-sm font-medium text-black dark:text-white leading-relaxed">
+              Washing baby bottles, fruits, and vegetables in tap water connected to a sludge-laden tank introduces coliform bacteria directly into meals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Chemical-Free Bio Protocol -->
+  <section class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Zero Toxicity Guarantee</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-black dark:text-white leading-tight">
+            Our 100% Food-Grade Eco-Shield Sanitization
+          </h2>
+          <p class="text-base font-medium text-black dark:text-white leading-relaxed">
+            We reject caustic chlorine bleaching powder that emits toxic fumes and leaves persistent chemical residues in your drinking supply. Our organic active compounds break down into pure oxygen and natural water molecules.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">1</div>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Bio-Oxygen Hydro Scrub</h4>
+                <p class="text-xs font-medium text-black dark:text-white">Releases microscopic effervescent micro-bubbles that naturally lift stubborn calcium scale and biofilm from plastic walls without abrasive wire scratches.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">2</div>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Germicidal UV-C Inactivation</h4>
+                <p class="text-xs font-medium text-black dark:text-white">Shortwave 254nm ultraviolet light shatters the DNA structure of Giardia, Cryptosporidium, and viruses that chlorine cannot kill.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">3</div>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Immediate Refill Readiness</h4>
+                <p class="text-xs font-medium text-black dark:text-white">No need to keep your tank empty for 24 hours to air out chemical smells. You can fill and use the water the very minute our technicians finish.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-sky-50 dark:bg-[#0c1e33] p-8 rounded-3xl border border-sky-200 dark:border-sky-800 shadow-xl space-y-6">
+          <h3 class="text-xl font-bold text-black dark:text-white">Family Safe Comparison</h3>
+          
+          <div class="space-y-4 text-xs sm:text-sm font-semibold">
+            <div class="grid grid-cols-2 gap-4 pb-3 border-b border-sky-200 dark:border-sky-800">
+              <div class="text-teal-600 dark:text-teal-400 font-bold">AquaPure Family Safe</div>
+              <div class="text-red-500 font-bold">Local Traditional Sweeper</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pb-2 border-b border-sky-100 dark:border-sky-800">
+              <div class="text-black dark:text-white"><i class="fas fa-check text-teal-500 mr-2"></i> Food-grade organic agents</div>
+              <div class="text-black dark:text-white"><i class="fas fa-times text-red-500 mr-2"></i> Harsh bleaching powder & acid</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pb-2 border-b border-sky-100 dark:border-sky-800">
+              <div class="text-black dark:text-white"><i class="fas fa-check text-teal-500 mr-2"></i> UV-C light sterilization</div>
+              <div class="text-black dark:text-white"><i class="fas fa-times text-red-500 mr-2"></i> No germicidal disinfection</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pb-2 border-b border-sky-100 dark:border-sky-800">
+              <div class="text-black dark:text-white"><i class="fas fa-check text-teal-500 mr-2"></i> Zero chemical fumes & odors</div>
+              <div class="text-black dark:text-white"><i class="fas fa-times text-red-500 mr-2"></i> Choking chlorine smell for days</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pb-2 border-b border-sky-100 dark:border-sky-800">
+              <div class="text-black dark:text-white"><i class="fas fa-check text-teal-500 mr-2"></i> Vacuum de-sludging extraction</div>
+              <div class="text-black dark:text-white"><i class="fas fa-times text-red-500 mr-2"></i> Dirty broom scratching tank walls</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="text-black dark:text-white"><i class="fas fa-check text-teal-500 mr-2"></i> Digital lab purity certificate</div>
+              <div class="text-black dark:text-white"><i class="fas fa-times text-red-500 mr-2"></i> Zero safety accountability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Domestic Water Touchpoints -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Complete Home Protection</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white mt-1">Every Tap Delivers Sparkling Health</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-3 shadow-sm">
+          <i class="fas fa-shower text-3xl text-teal-600 dark:text-teal-400"></i>
+          <h3 class="font-bold text-base text-black dark:text-white">Baths & Showers</h3>
+          <p class="text-xs font-medium text-black dark:text-white leading-relaxed">
+            Eliminates waterborne irritants that cause dry skin, itchy eczema flare-ups, and dull hair caused by suspended mineral sludge.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-3 shadow-sm">
+          <i class="fas fa-tooth text-3xl text-cyan-600 dark:text-cyan-400"></i>
+          <h3 class="font-bold text-base text-black dark:text-white">Toothbrushing & Gargling</h3>
+          <p class="text-xs font-medium text-black dark:text-white leading-relaxed">
+            Protect your mouth and gums from harmful oral bacteria that multiply inside dirty overhead tank pipes overnight.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-3 shadow-sm">
+          <i class="fas fa-utensils text-3xl text-teal-600 dark:text-teal-400"></i>
+          <h3 class="font-bold text-base text-black dark:text-white">Kitchen Cooking & Rinsing</h3>
+          <p class="text-xs font-medium text-black dark:text-white leading-relaxed">
+            Wash rice, greens, and cook hearty family meals knowing your base water is completely free of sewage bacteria and bird droppings.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-3 shadow-sm">
+          <i class="fas fa-shirt text-3xl text-cyan-600 dark:text-cyan-400"></i>
+          <h3 class="font-bold text-base text-black dark:text-white">Baby Laundry & Linens</h3>
+          <p class="text-xs font-medium text-black dark:text-white leading-relaxed">
+            Prevent yellow rust stains and mold spores from embedding into soft baby swaddles, cloth diapers, and bedsheets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Interactive Family Water Purity Quiz -->
+  <section id="water-health-quiz" class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="p-8 sm:p-12 rounded-3xl bg-sky-50 dark:bg-[#0c1e33] border border-teal-200 dark:border-teal-800 shadow-xl space-y-6">
+        <div class="text-center space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Quick Self-Audit</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Is Your Family's Water Supply Truly Safe?</h2>
+          <p class="text-xs sm:text-sm font-medium text-black dark:text-white max-w-xl mx-auto">
+            Answer 3 simple questions to calculate your household tank contamination risk index.
+          </p>
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <div class="p-4 rounded-xl bg-white dark:bg-[#08182b] border border-sky-200 dark:border-sky-700 space-y-2">
+            <div class="font-bold text-sm text-black dark:text-white">1. When was your overhead water tank or sump last professionally cleaned?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-semibold">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q1" value="low" class="text-teal-600">
+                <span>Under 3 months ago</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q1" value="med" checked class="text-teal-600">
+                <span>6 to 12 months ago</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q1" value="high" class="text-teal-600">
+                <span>Over a year / Never</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white dark:bg-[#08182b] border border-sky-200 dark:border-sky-700 space-y-2">
+            <div class="font-bold text-sm text-black dark:text-white">2. Have family members noticed yellow tint, foul odor, or itchy skin?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q2" value="yes" checked class="text-teal-600">
+                <span>Yes, occasionally or frequently</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q2" value="no" class="text-teal-600">
+                <span>No, water seems normal</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white dark:bg-[#08182b] border border-sky-200 dark:border-sky-700 space-y-2">
+            <div class="font-bold text-sm text-black dark:text-white">3. What is your primary water source?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-semibold">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q3" value="municipal" class="text-teal-600">
+                <span>Municipal Pipeline</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q3" value="borewell" checked class="text-teal-600">
+                <span>Deep Borewell / Well</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-700 cursor-pointer">
+                <input type="radio" name="q3" value="tanker" class="text-teal-600">
+                <span>Private Tanker Trucks</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 text-black dark:text-white space-y-2">
+            <div class="flex items-center gap-2 font-bold text-sm text-amber-700 dark:text-amber-400">
+              <i class="fas fa-triangle-exclamation"></i>
+              <span>Assessment: Moderate to High Biological Risk Detected</span>
+            </div>
+            <p class="text-xs font-medium text-black dark:text-white">
+              Borewell water stored for over 6 months typically accumulates 2 to 4 inches of ferric sludge and anaerobic slime. We advise booking a mechanized deep clean within 14 days.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="book-service.html" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold text-sm shadow-md hover:from-teal-700 hover:to-cyan-700 transition-all inline-flex items-center gap-2">
+            <i class="fas fa-shield-virus"></i>
+            <span>Schedule Family Sanitization Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: Parent & Pediatrician Testimonials -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Family Endorsements</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white mt-1">Recommended By Doctors & Cherished By Parents</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-sm font-medium text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+              "As a pediatrician, I regularly treat infants with unexplained skin dermatitis. In many cases, uncleaned rooftop water tanks are the root culprit. AquaPure's food-grade protocol is what I trust in my own home."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+            <img src="assets/images/avatar-5.jpg" alt="Dr. Ritu Verma, MD" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-teal-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">Dr. Ritu Verma, MD</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Consultant Pediatrician, Sunnyvale Clinic</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-sm font-medium text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+              "My 6-year-old daughter was suffering from persistent bath rashes. Within a week of AquaPure deep-cleaning our overhead tank and flushing the bathroom pipes, the irritation vanished completely. Highly recommended!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+            <img src="assets/images/avatar-3.jpg" alt="Sneha Mukherjee" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">Sneha Mukherjee</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Mother of Two, Blossom Valley</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-sm font-medium text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+              "We have elderly parents with weak immune systems. The peace of mind knowing that our drinking and bathing water has zero E.coli colonies thanks to AquaPure's UV sterilization is priceless."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+            <img src="assets/images/avatar-4.jpg" alt="Vikram Kulkarni" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-sky-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">Vikram Kulkarni</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Independent House Owner, Cupertino</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: 6 Golden Rules of Domestic Water Hygiene -->
+  <section class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Health Best Practices</span>
+        <h2 class="text-3xl font-extrabold text-black dark:text-white mt-1">The 6 Golden Rules For Pure Household Water</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">01</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Quarterly Tank Cleans</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Never let more than 90 days elapse between cleanings, particularly during warmer summer or monsoon periods.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">02</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Inspect Tank Lid Seals</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Ensure rooftop tank lids have airtight threaded seals to prevent airborne bird droppings and insect nests.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">03</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Clean Overflow Pipe Mesh</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Fit stainless steel insect meshes on overflow pipes so mosquitoes cannot enter to lay eggs.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">04</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Flush Internal Pipe Runs</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Perform high-pressure pipe de-scaling once a year to dislodge hardened calcification in wall lines.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">05</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Avoid Manual Bleaching</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Bleaching powder erodes plastic tanks, corrodes brass plumbing, and leaves toxic chloramines.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-teal-600 dark:text-teal-400 font-black text-2xl">06</div>
+          <h4 class="font-bold text-base text-black dark:text-white">Request Digital Lab Proof</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Always verify post-cleaning water turbidity (under 1.0 NTU) and zero coliform count on your report.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: Water Quality Laboratory Testing Parameters -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Scientific Validation</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">What We Test In Your Post-Cleaning Water</h2>
+        <p class="text-sm font-medium text-black dark:text-white">
+          Every Family Safe clean concludes with digital spectrometer and incubator readings uploaded directly to your customer dashboard.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2 shadow-sm">
+          <div class="text-teal-600 dark:text-teal-400 text-xl font-black"><i class="fas fa-bacteria"></i></div>
+          <h4 class="font-bold text-base text-black dark:text-white">Total Coliform & E. coli</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Must measure zero (0 CFU / 100ml) to ensure absence of fecal or sewage contamination.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2 shadow-sm">
+          <div class="text-cyan-600 dark:text-cyan-400 text-xl font-black"><i class="fas fa-eye-dropper"></i></div>
+          <h4 class="font-bold text-base text-black dark:text-white">Turbidity & Clarity</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Nephelometric Turbidity Units (NTU) guaranteed below 1.0 for crystalline clarity in bathtubs.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2 shadow-sm">
+          <div class="text-sky-600 dark:text-sky-400 text-xl font-black"><i class="fas fa-flask"></i></div>
+          <h4 class="font-bold text-base text-black dark:text-white">Balanced pH Factor</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Maintained within the ideal neutral 6.8 to 7.4 window to prevent infant skin drying and eye stinging.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2 shadow-sm">
+          <div class="text-emerald-500 text-xl font-black"><i class="fas fa-gauge"></i></div>
+          <h4 class="font-bold text-base text-black dark:text-white">TDS & Dissolved Solids</h4>
+          <p class="text-xs font-medium text-black dark:text-white">Monitored to detect external groundwater seepage or cracked sump wall infiltration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: Family Annual Protection Plan (AMC) -->
+  <section class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Year-Round Family Protection</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">Set It & Forget It: Annual Family Water AMC</h2>
+          <p class="text-sm font-medium text-black dark:text-white leading-relaxed">
+            Never worry about forgotten cleaning schedules again. With our Family AMC membership, our certified technicians arrive automatically every 90 days, deep clean both your overhead tank and sump, test water purity, and renew your safety seal.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs font-semibold text-black dark:text-white">
+            <div class="p-4 rounded-xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+              <i class="fas fa-calendar-days text-teal-600 dark:text-teal-400 text-lg mb-2 block"></i>
+              4 Automated quarterly deep cleans per year with priority weekend booking.
+            </div>
+            <div class="p-4 rounded-xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800">
+              <i class="fas fa-shield-virus text-cyan-600 dark:text-cyan-400 text-lg mb-2 block"></i>
+              2 Free emergency contamination callouts included at zero extra charge.
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 p-8 rounded-3xl bg-teal-50 dark:bg-[#0c1e33] border border-teal-200 dark:border-teal-800 text-center space-y-4">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center text-2xl shadow-inner">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 class="text-xl font-black text-black dark:text-white">Family AMC Membership</h3>
+          <div class="text-3xl font-black text-teal-600 dark:text-teal-400">\$199 <span class="text-sm font-normal text-black dark:text-white">/ year</span></div>
+          <p class="text-xs font-medium text-black dark:text-white">
+            Covers 1 Overhead Tank + 1 Underground Sump. Saves \$77 compared to individual one-time bookings.
+          </p>
+          <a href="amc-membership.html" class="block w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition-all">
+            Join Family AMC Plan
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 11: Home Preparation Instructions -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Hassle-Free Experience</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">How To Prepare Your Home In 3 Easy Steps</h2>
+        <p class="text-sm font-medium text-black dark:text-white">
+          Our team takes care of 99% of the work. Here is how homeowners can ensure a smooth, water-saving visit.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/allow-water-level-drop.jpg" alt="Allow Water Level To Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-black text-lg shadow-md">
+              1
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h4 class="font-bold text-base text-black dark:text-white">Allow Water Level To Drop</h4>
+            <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed">
+              Run your washing machine or water your garden the morning before the visit to lower the tank water level down to the bottom 10-15%, preventing clean water loss.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/clear-rooftop-path.png" alt="Clear Rooftop or Sump Path" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-teal-600 dark:text-teal-400 flex items-center justify-center font-black text-lg shadow-md">
+              2
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h4 class="font-bold text-base text-black dark:text-white">Clear Rooftop or Sump Path</h4>
+            <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed">
+              Ensure unobstructed access to your roof ladder or basement sump cover so our technicians can safely route high-pressure extraction hoses and power cables.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden group hover:shadow-xl transition-all">
+          <div class="relative h-48 overflow-hidden bg-sky-100 dark:bg-sky-950">
+            <img src="assets/images/refill-upon-departure.png" alt="Refill Upon Departure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-sm text-sky-600 dark:text-sky-400 flex items-center justify-center font-black text-lg shadow-md">
+              3
+            </div>
+          </div>
+          <div class="p-6 space-y-2">
+            <h4 class="font-bold text-base text-black dark:text-white">Refill Upon Departure</h4>
+            <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed">
+              Once our supervisor shows you the pristine tank and hands over your lab card, turn on your booster pump to refill your fresh, germ-free water immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 12: Family Water FAQs -->
+  <section class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Common Inquiries</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">Family Safe Cleaning FAQs</h2>
+        <p class="text-sm font-medium text-black dark:text-white">
+          Everything parents need to know about our chemicals, processes, and safety protocols.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <h4 class="font-bold text-base text-black dark:text-white flex items-center gap-2">
+            <i class="fas fa-circle-question text-teal-600 dark:text-teal-400"></i>
+            Is it safe to wash newborn baby bottles right after the cleaning?
+          </h4>
+          <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed pl-6">
+            Yes, 100%. Because we do not use toxic chemicals or chlorine bleaches, there are no residues to rinse out. As soon as fresh water fills the tank, it is safe for baby bottle sterilizing, cooking, and consumption.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <h4 class="font-bold text-base text-black dark:text-white flex items-center gap-2">
+            <i class="fas fa-circle-question text-teal-600 dark:text-teal-400"></i>
+            How does UV-C light work inside a water tank?
+          </h4>
+          <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed pl-6">
+            Our crews lower specialized germicidal quartz UV-C immersion lamps (254nm wavelength) across all inner tank walls. The ultraviolet rays destroy the DNA bonds of bacteria and viruses in seconds, rendering them incapable of reproduction.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
+          <h4 class="font-bold text-base text-black dark:text-white flex items-center gap-2">
+            <i class="fas fa-circle-question text-teal-600 dark:text-teal-400"></i>
+            Will the high-pressure water jet damage our plastic Sintex tank?
+          </h4>
+          <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed pl-6">
+            No. Our German rotary nozzles are calibrated between 120 and 150 bar pressure with wide fan angles. This removes clinging biofilm and stubborn algae without scratching, cracking, or degrading the food-grade plastic polymers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 13: Before & After Proof -->
+  <section class="py-16 bg-[#f0f9ff] dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Visible Transformation</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">Real Tank Before & After Comparisons</h2>
+        <p class="text-sm font-medium text-black dark:text-white">
+          See the undeniable difference our 7-stage mechanized process achieves in residential rooftop tanks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-md space-y-4">
+          <div class="h-48 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-950/40 dark:to-amber-900/40 border border-amber-300 dark:border-amber-800 flex flex-col items-center justify-center p-6 text-center space-y-2">
+            <span class="px-3 py-1 rounded-full bg-red-600 text-white font-black text-xs">BEFORE AQUAPURE</span>
+            <div class="text-sm font-bold text-black dark:text-white">3-Year Accumulated Sludge & Algae</div>
+            <p class="text-xs font-medium text-black dark:text-white">Heavy brown silt sedimentation, green algae colonies, and foul stagnant smell entering taps.</p>
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold text-black dark:text-white px-2">
+            <span>Turbidity: 18.4 NTU (Dangerous)</span>
+            <span class="text-red-500">Coliform: Positive</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-teal-200 dark:border-teal-800 shadow-md space-y-4">
+          <div class="h-48 rounded-2xl bg-gradient-to-br from-cyan-100 to-teal-100 dark:from-teal-950/50 dark:to-cyan-950/50 border border-teal-300 dark:border-teal-700 flex flex-col items-center justify-center p-6 text-center space-y-2">
+            <span class="px-3 py-1 rounded-full bg-teal-600 text-white font-black text-xs">AFTER AQUAPURE</span>
+            <div class="text-sm font-bold text-black dark:text-white">100% Sanitized & UV Disinfected</div>
+            <p class="text-xs font-medium text-black dark:text-white">Spotless white polymer walls, crystal clear water, zero odors, and sterile drinking baseline.</p>
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold text-black dark:text-white px-2">
+            <span class="text-teal-600 dark:text-teal-400">Turbidity: 0.3 NTU (Pristine)</span>
+            <span class="text-emerald-600">Coliform: 0 CFU (Sterile)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 14: Family Community Health Pledge -->
+  <section class="py-16 bg-white dark:bg-[#0a192c] border-b border-sky-200 dark:border-sky-900 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center text-2xl shadow-sm">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-black dark:text-white">Our Family Health & Safety Pledge</h2>
+      <p class="text-sm font-medium text-black dark:text-white leading-relaxed max-w-2xl mx-auto">
+        We promise that our technicians will never enter your home without verified digital identification, will never leave behind caustic chemical residues, and will always treat your family's health with the care and scientific diligence it deserves.
+      </p>
+      <div class="pt-2 text-xs font-bold text-cyan-600 dark:text-cyan-400">
+        Signed: The Medical Advisory & Operations Board, AquaPure Technologies
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 15: Final Family Health CTA -->
+  <section class="py-16 bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <h2 class="text-3xl sm:text-5xl font-black">Give Your Family The Gift Of Pure Water</h2>
+      <p class="text-base sm:text-lg font-medium text-white/95 max-w-2xl mx-auto">
+        Schedule your Family Safe 7-stage chemical-free tank and sump cleaning today. Safe for infants, gentle on skin, and 100% pure.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="book-service.html" class="px-8 py-4 rounded-2xl bg-white text-[#042f2e] hover:bg-sky-50 font-black text-base shadow-xl transition-all flex items-center gap-2">
+          <i class="fas fa-calendar-check text-teal-600"></i>
+          <span>Schedule Family Safe Clean</span>
+        </a>
+        <a href="pricing.html" class="px-8 py-4 rounded-2xl bg-teal-900/50 hover:bg-teal-900/80 border border-white/30 text-white font-extrabold text-base transition-all">
+          <span>Compare Family Packages</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Navigation (Consistent Across All Pages) -->
+    <!-- Standardized Footer -->
+  <footer class="bg-white dark:bg-[#07131f] border-t border-sky-200 dark:border-sky-900 text-black dark:text-white pt-16 pb-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-sky-200 dark:border-sky-800">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+              <i class="fas fa-droplet text-xl"></i>
+            </div>
+            <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+              <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+              <span class="text-black dark:text-white">Pure</span>
+            </div>
+          </a>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white max-w-sm leading-relaxed">
+            Professional mechanized overhead tank and underground sump cleaning services. 7-stage deep disinfection, UV sterilization, and lab-tested drinking water safety for homes and communities.
+          </p>
+          <div class="flex items-center gap-3 pt-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="X">
+              <i class="fab fa-x-twitter text-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Navigation</h4>
+          <ul class="space-y-2 text-xs sm:text-sm font-semibold text-black dark:text-white">
+            <li><a href="index.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">AquaPure Landing</a></li>
+            <li><a href="home-family.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Family Safe Home</a></li>
+            <li><a href="about.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Services</a></li>
+            <li><a href="pricing.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pricing</a></li>
+            <li><a href="blog.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact Us</a></li>
+            <li><a href="dashboard.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Services</h4>
+          <ul class="space-y-2 text-xs sm:text-sm font-semibold text-black dark:text-white">
+            <li><a href="services.html#overhead-tank" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Overhead Tank Cleaning</a></li>
+            <li><a href="services.html#underground-sump" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Underground Sump Cleaning</a></li>
+            <li><a href="services.html#disinfection" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">UV Bio-Sanitization</a></li>
+            <li><a href="services.html#pipeline-flushing" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pipeline De-scaling</a></li>
+            <li><a href="service-details.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">7-Stage Deep Clean</a></li>
+            <li><a href="amc-membership.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">AMC Memberships</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Address (42 Blossom Valley Way, Sunnyvale, CA 94087) -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Office Location</h4>
+          <div class="space-y-2.5 text-xs sm:text-sm font-semibold text-black dark:text-white">
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-location-dot text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>42 Blossom Valley Way, Sunnyvale, CA 94087</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-phone-volume text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <a href="tel:+18004389283" class="hover:underline text-cyan-600 dark:text-cyan-400 font-bold">1-800-AQUA-PURE</a>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-envelope text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>support@aquapureclean.com</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-clock text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>Mon - Sun: 7:00 AM - 9:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 text-center text-xs font-semibold text-black dark:text-white">
+        &copy; 2026 AquaPure Technologies Inc. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="aquaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#aquaGrad)" />
+  <!-- FontAwesome droplet shape -->
+  <path d="M32 12 C32 12 18 30 18 40 C18 47.732 24.268 54 32 54 C39.732 54 46 47.732 46 40 C46 30 32 12 32 12 Z" fill="#ffffff" filter="url(#shadow)" />
+  <!-- Inner water reflection highlight -->
+  <path d="M36 28 C36 28 41 35 41 40 C41 44 38.5 47 35 47 C37 45 38 42.5 38 40 C38 35.5 34.5 30.5 36 28 Z" fill="rgba(255,255,255,0.45)" />
+</svg>

@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | AquaPure Customer Portal</title>
+  <meta name="description" content="AquaPure Customer Portal: Book cleaning visits, view digital lab reports, set recurring reminders, and manage invoices.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#f0f9ff] dark:bg-[#07131f] text-black dark:text-white min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- ==========================================================================
+       TOP APP HEADER (Flush to Left - No Margin Gap - Matches User Image Request)
+       ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c1e33]/95 backdrop-blur-md border-b border-sky-200 dark:border-sky-900 shadow-sm transition-colors duration-300">
+    <div class="w-full px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- MOBILE DASHBOARD HEADER (Matches Reference Image 3: Left Hamburger, Center Logo, Right User Avatar) -->
+        <div class="flex lg:hidden items-center justify-between w-full">
+          <!-- Left: Rounded Hamburger Button -->
+          <button id="dashboard-sidebar-toggle" class="w-11 h-11 rounded-2xl border border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-[#07131f] flex items-center justify-center text-black dark:text-white shadow-sm active:scale-95 transition-all" aria-label="Toggle Dashboard Menu">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+
+          <!-- Center: AquaPure Logo -->
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+              <i class="fas fa-droplet text-lg"></i>
+            </div>
+            <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+              <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+              <span class="text-black dark:text-white">Pure</span>
+            </div>
+          </a>
+
+          <!-- Right: Circular User Avatar with Cyan Border Ring -->
+          <div class="shrink-0">
+            <img src="assets/images/avatar-1.jpg" alt="Vikram Sharma" class="w-10 h-10 rounded-full border-2 border-cyan-400 object-cover shadow-sm">
+          </div>
+        </div>
+
+        <!-- DESKTOP DASHBOARD HEADER (Large Screens: Logo on Left, Controls & Avatar Pill on Right) -->
+        <div class="hidden lg:flex items-center justify-between w-full">
+          <!-- Logo & Brand Name -->
+          <a href="index.html" class="flex items-center gap-3 group shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+              <i class="fas fa-droplet text-xl"></i>
+            </div>
+            <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+              <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+              <span class="text-black dark:text-white">Pure</span>
+            </div>
+          </a>
+
+          <!-- Right Side Utility Controls & User Profile Avatar -->
+          <div class="flex items-center gap-3 shrink-0">
+            <button class="theme-toggle w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+              <i class="theme-toggle-icon fas fa-moon text-sm"></i>
+            </button>
+
+            <button class="rtl-toggle w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors" title="Toggle RTL / LTR">
+              <i class="fas fa-arrow-right-arrow-left text-xs"></i>
+            </button>
+
+            <!-- User Profile Avatar Pill -->
+            <div class="flex items-center gap-2.5 pl-2 border-l border-sky-200 dark:border-sky-800">
+              <img src="assets/images/avatar-1.jpg" alt="Vikram Sharma" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500 shadow-md">
+              <div class="text-left leading-tight">
+                <div class="font-bold text-xs text-black dark:text-white">Vikram Sharma</div>
+                <div class="text-[10px] font-semibold text-cyan-600 dark:text-cyan-400">Customer Portal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Mobile Sidebar Backdrop (Prevents Background Scroll) -->
+  <div id="dashboard-sidebar-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden lg:hidden transition-opacity"></div>
+
+  <!-- ==========================================================================
+       MAIN DASHBOARD CONTAINER
+       ========================================================================== -->
+  <div class="flex-1 w-full flex flex-col lg:flex-row items-start transition-colors relative">
+    
+    <!-- ========================================================================
+         LEFT SIDEBAR MENU: Sticky on Scroll, Mobile Off-Canvas Drawer
+         ======================================================================== -->
+    <aside id="dashboard-sidebar" class="fixed inset-y-0 left-0 w-full sm:w-80 max-w-[85vw] h-full h-screen h-[100dvh] bg-white dark:bg-[#0c1e33] z-50 transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:w-80 lg:h-[calc(100vh-5rem)] lg:sticky lg:top-20 overflow-y-auto shadow-2xl lg:shadow-none border-r border-sky-200 dark:border-sky-800 p-5 sm:p-6 flex flex-col justify-between">
+      
+      <div class="space-y-6">
+        
+        <!-- Mobile Drawer Header (Logo & Close Button) -->
+        <div class="flex items-center justify-between pb-4 border-b border-sky-100 dark:border-sky-800 lg:hidden">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+              <i class="fas fa-droplet text-sm"></i>
+            </div>
+            <span class="text-xl font-black"><span class="text-cyan-600 dark:text-cyan-400">Aqua</span><span class="text-black dark:text-white">Pure</span></span>
+          </div>
+          <button id="dashboard-sidebar-close" class="w-9 h-9 rounded-xl flex items-center justify-center text-black dark:text-white hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors" aria-label="Close Sidebar">
+            <i class="fas fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Sidebar Hub Title -->
+        <div class="space-y-1">
+          <span class="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+            CUSTOMER PORTAL
+          </span>
+        </div>
+
+        <!-- Navigation Menu List -->
+        <nav class="space-y-2" id="dashboard-sidebar-nav">
+          
+          <!-- Menu Item 1: Overview Dashboard -->
+          <button onclick="switchDashboardTab('tab-overview')" id="nav-btn-tab-overview" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-bold text-xs sm:text-sm transition-all bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-md text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-table-columns text-base w-5 text-center shrink-0"></i>
+              <span>Overview Dashboard</span>
+            </div>
+          </button>
+
+          <!-- Menu Item 2: Booking Cleaning Visits -->
+          <button onclick="switchDashboardTab('tab-visits')" id="nav-btn-tab-visits" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-calendar-check text-base w-5 text-center text-cyan-600 dark:text-cyan-400 shrink-0"></i>
+              <span>Booking Cleaning Visits</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-[10px] font-black shrink-0">1 Due</span>
+          </button>
+
+          <!-- Menu Item 3: Viewing Service Reports -->
+          <button onclick="switchDashboardTab('tab-reports')" id="nav-btn-tab-reports" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-vial-circle-check text-base w-5 text-center text-teal-600 dark:text-teal-400 shrink-0"></i>
+              <span>Viewing Service Reports</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 text-[10px] font-black shrink-0">Lab Ready</span>
+          </button>
+
+          <!-- Menu Item 4: Setting Recurring Reminders -->
+          <button onclick="switchDashboardTab('tab-reminders')" id="nav-btn-tab-reminders" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-bell text-base w-5 text-center text-amber-500 shrink-0"></i>
+              <span>Setting Recurring Reminders</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 text-[10px] font-black shrink-0">Active</span>
+          </button>
+
+          <!-- Menu Item 5: Managing Invoices -->
+          <button onclick="switchDashboardTab('tab-invoices')" id="nav-btn-tab-invoices" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-file-invoice-dollar text-base w-5 text-center text-emerald-500 shrink-0"></i>
+              <span>Managing Invoices</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[10px] font-black shrink-0">Paid</span>
+          </button>
+
+          <!-- Menu Item 6: Tank & Sump Details -->
+          <button onclick="switchDashboardTab('tab-tanks')" id="nav-btn-tab-tanks" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-database text-base w-5 text-center text-sky-600 dark:text-sky-400 shrink-0"></i>
+              <span>Tank &amp; Sump Details</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 text-[10px] font-black shrink-0">2 Units</span>
+          </button>
+
+          <!-- Menu Item 7: My Profile -->
+          <button onclick="switchDashboardTab('tab-profile')" id="nav-btn-tab-profile" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-user-gear text-base w-5 text-center text-purple-500 shrink-0"></i>
+              <span>My Profile</span>
+            </div>
+          </button>
+
+        </nav>
+
+      </div>
+
+      <!-- Bottom Actions & Mobile Settings -->
+      <div class="pt-6 mt-6 border-t border-sky-100 dark:border-sky-800 space-y-4">
+        <a href="login-register.html" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-xs font-bold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors">
+          <i class="fas fa-arrow-right-from-bracket text-sm"></i>
+          <span>Sign Out</span>
+        </a>
+
+        <!-- Mobile Settings Toggles (Requirement 3: Only inside mobile drawer menu) -->
+        <div class="lg:hidden flex items-center justify-between pt-3 border-t border-sky-100 dark:border-sky-800 text-xs font-black text-black dark:text-white">
+          <span class="text-xs font-bold">Settings:</span>
+          <div class="flex items-center gap-2">
+            <button class="theme-toggle w-9 h-9 rounded-2xl bg-sky-100 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-center text-black dark:text-white shadow-sm" title="Toggle Light / Dark Mode">
+              <i class="theme-toggle-icon fas fa-moon text-xs"></i>
+            </button>
+            <button class="rtl-toggle px-3 py-2 rounded-2xl bg-sky-100 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center gap-1.5 text-xs font-bold text-black dark:text-white shadow-sm" title="Toggle RTL / LTR">
+              <i class="fas fa-arrow-left text-xs"></i>
+              <span class="rtl-toggle-text">RTL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ========================================================================
+         RIGHT WORKSPACE AREA: Scrolls smoothly while side menu stays fixed
+         ======================================================================== -->
+    <main class="flex-1 min-w-0 p-5 sm:p-8 lg:p-10 space-y-8 bg-[#f0f9ff] dark:bg-[#07131f] transition-colors">
+      
+      <!-- ======================================================================
+           TAB VIEW 1: OVERVIEW DASHBOARD (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-overview" class="dashboard-tab-pane space-y-8">
+        
+        <!-- Header Row: Title on Left, Status Pill on Right -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h1 class="text-3xl font-black text-black dark:text-white tracking-tight">
+              Water Hygiene Dashboard
+            </h1>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Live residential storage monitoring, upcoming cleaning cycles, and lab purity telemetry.
+            </p>
+          </div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold self-start sm:self-auto">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Active AMC Plan 2026</span>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: KEY HYGIENE METRICS & HEALTH TELEMETRY
+             -------------------------------------------------------------------- -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base font-black text-black dark:text-white uppercase tracking-wider">
+              1. Real-Time Storage &amp; Purity Metrics
+            </h2>
+            <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400">Sensor Sync: Live Today</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-5 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex items-center justify-between">
+              <div class="space-y-1">
+                <span class="text-[11px] font-black uppercase tracking-wider text-black dark:text-white">ENROLLED STORAGE</span>
+                <div class="text-2xl font-black text-cyan-600 dark:text-cyan-400">2 Active</div>
+                <div class="text-[10px] font-semibold text-black dark:text-white">1,500L Tank + 3,000L Sump</div>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-lg shadow-inner">
+                <i class="fas fa-database"></i>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex items-center justify-between">
+              <div class="space-y-1">
+                <span class="text-[11px] font-black uppercase tracking-wider text-black dark:text-white">PURITY INDEX</span>
+                <div class="text-2xl font-black text-teal-600 dark:text-teal-400">99.4%</div>
+                <div class="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 font-bold">0 Coliform Detected</div>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center text-lg shadow-inner">
+                <i class="fas fa-circle-check"></i>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex items-center justify-between">
+              <div class="space-y-1">
+                <span class="text-[11px] font-black uppercase tracking-wider text-black dark:text-white">NEXT SERVICE</span>
+                <div class="text-2xl font-black text-amber-500">28 Nov</div>
+                <div class="text-[10px] font-semibold text-black dark:text-white">7-Stage Deep Clean</div>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-500 flex items-center justify-center text-lg shadow-inner">
+                <i class="fas fa-calendar-day"></i>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex items-center justify-between">
+              <div class="space-y-1">
+                <span class="text-[11px] font-black uppercase tracking-wider text-black dark:text-white">AMC BALANCE</span>
+                <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400">2 Left</div>
+                <div class="text-[10px] font-semibold text-black dark:text-white">Platinum Annual Plan</div>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg shadow-inner">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: ACTIVE STORAGE RESERVOIRS & BIOFILM STATUS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sky-100 dark:border-sky-800/80 pb-4">
+            <div>
+              <h2 class="text-lg font-black text-black dark:text-white">
+                2. Active Storage Reservoirs &amp; Structural Status
+              </h2>
+              <p class="text-xs font-semibold text-black dark:text-white">
+                Physical condition, bacterial biofilm status, and sanitizer certification for enrolled tanks.
+              </p>
+            </div>
+            <button onclick="switchDashboardTab('tab-tanks')" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline self-start sm:self-auto">
+              View All Technical Specs &rarr;
+            </button>
+          </div>
+
+          <div class="space-y-3">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 gap-3">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 font-black text-sm flex items-center justify-center shrink-0">
+                  <i class="fas fa-arrow-up-from-bracket"></i>
+                </div>
+                <div>
+                  <div class="font-black text-sm text-black dark:text-white">Overhead Rooftop Tank (Sintex 3-Layer)</div>
+                  <div class="text-xs font-semibold text-black dark:text-white">
+                    1,500L Capacity &bull; Terrace Mount &bull; Last Sanitized: 15 Aug 2026
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-bold">
+                  Biofilm Free (Sterile)
+                </span>
+                <button onclick="switchDashboardTab('tab-reports')" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline">
+                  Lab Report
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 gap-3">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 font-black text-sm flex items-center justify-center shrink-0">
+                  <i class="fas fa-dungeon"></i>
+                </div>
+                <div>
+                  <div class="font-black text-sm text-black dark:text-white">Underground RCC Masonry Sump</div>
+                  <div class="text-xs font-semibold text-black dark:text-white">
+                    3,000L Capacity &bull; Epoxy Sealed &bull; Last Sanitized: 15 Aug 2026
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 text-xs font-bold">
+                  Sludge Depth: 0.0 mm
+                </span>
+                <button onclick="switchDashboardTab('tab-visits')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">
+                  Schedule Clean
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 gap-3">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-black text-sm flex items-center justify-center shrink-0">
+                  <i class="fas fa-faucet-drip"></i>
+                </div>
+                <div>
+                  <div class="font-black text-sm text-black dark:text-white">Kitchen RO Pipeline &amp; Booster Flush</div>
+                  <div class="text-xs font-semibold text-black dark:text-white">
+                    Hydro-pulsed air/water descaling active &bull; Anti-microbial copper barrier
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-xs font-bold">
+                  Scale Free
+                </span>
+                <button onclick="switchDashboardTab('tab-reports')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">
+                  Telemetry
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: LIVE OPERATIONS & DISPATCH AUDIT TRAIL
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-sky-100 dark:border-sky-800/80 pb-4">
+            <div>
+              <h2 class="text-lg font-black text-black dark:text-white">
+                3. Technical Crew &amp; Operational Audit Trail
+              </h2>
+              <p class="text-xs font-semibold text-black dark:text-white">
+                Field supervisor dispatch logs, chain-of-custody tracking, and sludge disposal manifests.
+              </p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-bold">
+              Dispatch Confirmed
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-sky-50/50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-bold text-xs uppercase tracking-wide">
+                <i class="fas fa-truck-fast"></i> Assigned Crew Lead
+              </div>
+              <div class="font-black text-sm text-black dark:text-white">Alex Mercer &bull; Van #AQ-08</div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Certified Water Hygiene Specialist (ID #AP-8842). Fully equipped with 150-bar rotary pressure washers and IP68 UV-C sterilizers.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="flex items-center gap-2 text-teal-600 dark:text-teal-400 font-bold text-xs uppercase tracking-wide">
+                <i class="fas fa-vial"></i> NABL Certified Lab Chain
+              </div>
+              <div class="font-black text-sm text-black dark:text-white">Digital Chain-of-Custody</div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Dual sample collection protocol (Pre-Clean Baseline vs. Post-Clean Sterile). Negative for Legionella pneumophila and Coliforms.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-wide">
+                <i class="fas fa-file-contract"></i> Sludge Disposal Manifest
+              </div>
+              <div class="font-black text-sm text-black dark:text-white">Manifest #EPA-2026-904</div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                100% Guaranteed safe vacuum extraction. Heavy sludge transported to authorized municipal wastewater treatment facilities.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: WATER QUALITY BULLETINS & PREVENTIVE ADVISORIES
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="border-b border-sky-100 dark:border-sky-800/80 pb-4">
+            <h2 class="text-lg font-black text-black dark:text-white">
+              4. Regional Water Safety Bulletins &amp; Hygiene Advisories
+            </h2>
+            <p class="text-xs font-semibold text-black dark:text-white mt-0.5">
+              Seasonal municipal pipeline notices and pediatrician-reviewed water hygiene protocols.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 space-y-2">
+              <div class="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs">
+                <i class="fas fa-triangle-exclamation"></i> Seasonal Pre-Sanitization
+              </div>
+              <h3 class="font-black text-sm text-black dark:text-white">Monsoon Pipeline Turbidity</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Heavy rainfall washes fine clay sediment into civic water mains. We recommend completing your quarterly deep clean prior to seasonal rains.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/80 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 space-y-2">
+              <div class="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-bold text-xs">
+                <i class="fas fa-faucet"></i> Civic Supply Telemetry
+              </div>
+              <h3 class="font-black text-sm text-black dark:text-white">Municipal Chlorine Advisory</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Residual chlorine in Sunnyvale mains measured at 0.55 mg/L. Fully within safe potable limits and non-corrosive to domestic brass fittings.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 space-y-2">
+              <div class="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs">
+                <i class="fas fa-shield-virus"></i> Complimentary Service
+              </div>
+              <h3 class="font-black text-sm text-black dark:text-white">Lid Hermetic Gasket Check</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                During your 28 Nov visit, technicians will inspect and lubricate your rooftop tank silicone rubber seals to prevent airborne insect contamination.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 2: BOOKING CLEANING VISITS (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-visits" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">Booking Cleaning Visits</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Schedule upcoming mechanized cleans, book instant on-demand visits, inspect past visits, and view preparation guides.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: UPCOMING SCHEDULED CLEANING VISIT
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sky-100 dark:border-sky-800 pb-4">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-bold uppercase mb-2">
+                <i class="fas fa-clock"></i> Next Confirmed Service Visit
+              </div>
+              <h2 class="text-xl font-black text-black dark:text-white">
+                1. Upcoming Scheduled Cleaning Visit &amp; Crew Dispatch
+              </h2>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+              Confirmed on Calendar
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-5 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-xs font-semibold text-black dark:text-white">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-cyan-600 dark:text-cyan-400 block mb-0.5">Service Date</span>
+              <strong class="text-sm font-black">Friday, 28 Nov 2026</strong>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold text-cyan-600 dark:text-cyan-400 block mb-0.5">Arrival Window</span>
+              <strong class="text-sm font-black">09:00 AM &ndash; 12:00 PM</strong>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold text-cyan-600 dark:text-cyan-400 block mb-0.5">Assigned Technicians</span>
+              <strong class="text-sm font-black">Alex M. &bull; Team #08</strong>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold text-cyan-600 dark:text-cyan-400 block mb-0.5">Scope of Work</span>
+              <strong class="text-sm font-black">7-Stage Deep Clean (Tank + Sump)</strong>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button onclick="showToast('Visit Confirmed! SMS reminder will be dispatched 24 hours prior to 28 Nov.', 'success')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-md">
+              Confirm Availability
+            </button>
+            <button onclick="showToast('Reschedule request opened. Please pick a new available slot below.', 'info')" class="px-5 py-2.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs sm:text-sm">
+              Reschedule Visit
+            </button>
+            <button onclick="showToast('Contacting supervisor Alex Mercer (Direct Phone: +1 408-555-0199).', 'info')" class="px-5 py-2.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs sm:text-sm">
+              Call Field Crew
+            </button>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: INSTANT ON-DEMAND VISIT SCHEDULER
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Instant On-Demand Visit Scheduler &amp; Tank Selection
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Select specific tanks, specify special arrival requests, and book instantly using your remaining AMC balance.
+            </p>
+          </div>
+
+          <form onsubmit="event.preventDefault(); showToast('On-Demand Visit Scheduled Successfully! Ref: #AQ-BK-8841.', 'success');" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Select Reservoirs</label>
+                <select class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+                  <option>Both Overhead Tank &amp; Underground Sump (Recommended)</option>
+                  <option>Rooftop Overhead Tank Only (1,500L)</option>
+                  <option>Underground Masonry Sump Only (3,000L)</option>
+                  <option>Emergency Sludge Vacuuming &amp; Bio-Fogging Only</option>
+                </select>
+              </div>
+
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Preferred Date</label>
+                <input type="date" value="2026-11-28" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Arrival Time Slot</label>
+                <select class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+                  <option>Morning (09:00 AM &ndash; 12:00 PM)</option>
+                  <option>Afternoon (01:00 PM &ndash; 04:00 PM)</option>
+                  <option>Weekend Saturday Morning (10:00 AM &ndash; 01:00 PM)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-black dark:text-white">Special Property Access Instructions</label>
+              <input type="text" placeholder="e.g. Terrace access key with security guard, please ring front bell upon arrival" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div class="text-xs font-semibold text-black dark:text-white">
+                Deduction: <strong class="text-cyan-600 dark:text-cyan-400 font-black">1 Visit from AMC Balance (Remaining: 1)</strong>
+              </div>
+              <button type="submit" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-md">
+                Confirm Booking With AMC Credit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: VERIFIED HISTORICAL VISITS LOG
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              3. Verified Historical Service Visits &amp; Digital Audit Trail
+            </h2>
+            <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400">4 Completed Visits</span>
+          </div>
+
+          <div class="divide-y divide-sky-100 dark:divide-sky-800 text-xs font-semibold text-black dark:text-white">
+            
+            <div class="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <strong class="text-sm font-black block">15 Aug 2026 &bull; 7-Stage Deep Clean (Tank + Sump)</strong>
+                <span class="text-[11px] text-black dark:text-white">Completed in 2h 45m &bull; Tech Lead: Alex Mercer &bull; Sludge Extracted: 4.2 kg</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">100% Sterile</span>
+                <button onclick="showToast('Downloading Signed Service Certificate #AQ-CERT-8842.', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">Certificate &darr;</button>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <strong class="text-sm font-black block">12 May 2026 &bull; Pre-Monsoon Mechanized Sump Vacuuming</strong>
+                <span class="text-[11px] text-black dark:text-white">Completed in 2h 15m &bull; Tech Lead: Priya Nair &bull; Sludge Extracted: 6.8 kg</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Passed</span>
+                <button onclick="showToast('Downloading Signed Service Certificate #AQ-CERT-7731.', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">Certificate &darr;</button>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <strong class="text-sm font-black block">18 Feb 2026 &bull; Bio-Organic Anti-Bacterial Fogging &amp; TDS Check</strong>
+                <span class="text-[11px] text-black dark:text-white">Completed in 2h 00m &bull; Tech Lead: David Kim &bull; TDS Adjusted: 138 ppm</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Passed</span>
+                <button onclick="showToast('Downloading Signed Service Certificate #AQ-CERT-6612.', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">Certificate &darr;</button>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <strong class="text-sm font-black block">20 Nov 2025 &bull; Initial 150-Bar Rotary Pressure Flush</strong>
+                <span class="text-[11px] text-black dark:text-white">Completed in 3h 10m &bull; Tech Lead: Alex Mercer &bull; Full Biofilm Stripping</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Passed</span>
+                <button onclick="showToast('Downloading Signed Service Certificate #AQ-CERT-5520.', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">Certificate &darr;</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: PRE-VISIT CUSTOMER PREPARATION CHECKLIST
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              4. Pre-Visit Customer Preparation Checklist &amp; Safety Protocols
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Follow these simple steps before our arrival to ensure rapid service completion and zero water wastage.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 font-black text-xs flex items-center justify-center">
+                01
+              </div>
+              <h3 class="font-bold text-sm text-black dark:text-white">Water Drawdown</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Turn off your water pump / inlet valve 6-8 hours prior so storage level naturally drops to 10-15%.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 font-black text-xs flex items-center justify-center">
+                02
+              </div>
+              <h3 class="font-bold text-sm text-black dark:text-white">Clear Access Route</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Ensure terrace stairway doors, loft hatches, and garden sump covers are unlocked for our technicians.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 font-black text-xs flex items-center justify-center">
+                03
+              </div>
+              <h3 class="font-bold text-sm text-black dark:text-white">Power Outlet Access</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Keep an operational 15A electrical socket within 25 meters for our rotary jets and vacuum pumps.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 font-black text-xs flex items-center justify-center">
+                04
+              </div>
+              <h3 class="font-bold text-sm text-black dark:text-white">Immediate Refill</h3>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Once sterilization is signed off, our crew initiates immediate refilling and tests automatic float switches.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 3: VIEWING SERVICE REPORTS (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-reports" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">Viewing Service Reports</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Certified digital lab reports, high-resolution before &amp; after photographic evidence, and long-term water purity trends.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: LATEST DIGITAL LAB & MICROBIOLOGY REPORT
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sky-100 dark:border-sky-800 pb-4">
+            <div>
+              <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 text-xs font-bold uppercase">
+                Official Report #AQ-LAB-7842
+              </span>
+              <h2 class="text-xl font-black text-black dark:text-white mt-1">
+                1. Certified Microbiology &amp; Water Quality Parameters
+              </h2>
+            </div>
+            <button onclick="showToast('Downloading Certified Signed PDF Report #AQ-LAB-7842...', 'success')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold text-xs sm:text-sm shadow-md self-start sm:self-auto">
+              Download PDF Report &darr;
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">E. Coli / Coliform</span>
+              <div class="text-xl font-black text-emerald-600 dark:text-emerald-400">0 CFU</div>
+              <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">100% Sterile</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">TDS Level</span>
+              <div class="text-xl font-black text-cyan-600 dark:text-cyan-400">138 ppm</div>
+              <span class="text-[10px] font-bold text-cyan-600 dark:text-cyan-400">Optimal (50-300)</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">pH Value</span>
+              <div class="text-xl font-black text-teal-600 dark:text-teal-400">7.35</div>
+              <span class="text-[10px] font-bold text-teal-600 dark:text-teal-400">Neutral Balanced</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">Turbidity</span>
+              <div class="text-xl font-black text-indigo-600 dark:text-indigo-400">0.42 NTU</div>
+              <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">Crystal Clear (&lt;1.0)</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">Residual Chlorine</span>
+              <div class="text-xl font-black text-blue-600 dark:text-blue-400">0.55 mg/L</div>
+              <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400">Safe Civic Limit</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 text-center space-y-1">
+              <span class="text-[10px] uppercase font-bold text-black dark:text-white">Heavy Metals</span>
+              <div class="text-xl font-black text-purple-600 dark:text-purple-400">ND</div>
+              <span class="text-[10px] font-bold text-purple-600 dark:text-purple-400">Not Detected (&lt;0.001)</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: PHOTOGRAPHIC BEFORE & AFTER EVIDENCE VAULT
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Photographic Before &amp; After Inspection Vault
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Visual proof documented by our technicians before de-watering and after terminal UV-C bio-sterilization.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-xs text-black dark:text-white">Overhead Tank Floor &bull; Sludge Extraction</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Cleaned</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-bold">
+                <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/40 text-rose-700 dark:text-rose-400">
+                  <div class="text-xs font-black uppercase mb-1">Before Clean</div>
+                  Heavy rust-brown sediment, anaerobic slime layer on floor
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-400">
+                  <div class="text-xs font-black uppercase mb-1">After 7-Stage</div>
+                  Pristine food-grade white polyethylene, 100% de-scaled
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-xs text-black dark:text-white">Underground Sump Wall Corners &bull; Biofilm</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Cleaned</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-bold">
+                <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/40 text-rose-700 dark:text-rose-400">
+                  <div class="text-xs font-black uppercase mb-1">Before Clean</div>
+                  Algae growth along epoxy grout, municipal pipe silt
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-400">
+                  <div class="text-xs font-black uppercase mb-1">After 7-Stage</div>
+                  Scoured with 150-bar rotary jets &amp; UV sterilized
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: LONGITUDINAL WATER QUALITY TRENDS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              3. Longitudinal Water Quality Trend Analysis (Last 4 Quarters)
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Demonstrating the sustained microbiological improvement of regular scheduled quarterly mechanized maintenance.
+            </p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-semibold text-black dark:text-white">
+              <thead>
+                <tr class="border-b border-sky-200 dark:border-sky-800 text-[11px] font-black uppercase text-cyan-600 dark:text-cyan-400">
+                  <th class="py-2.5">Quarter</th>
+                  <th class="py-2.5">Date Tested</th>
+                  <th class="py-2.5">TDS (ppm)</th>
+                  <th class="py-2.5">Turbidity (NTU)</th>
+                  <th class="py-2.5">Coliform CFU</th>
+                  <th class="py-2.5">Hygiene Rating</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-sky-100 dark:divide-sky-800/60">
+                <tr>
+                  <td class="py-3 font-bold">Q4 2026 (Latest)</td>
+                  <td class="py-3">15 Aug 2026</td>
+                  <td class="py-3 text-cyan-600 dark:text-cyan-400 font-bold">138 ppm</td>
+                  <td class="py-3">0.42 NTU</td>
+                  <td class="py-3 text-emerald-600 dark:text-emerald-400 font-bold">0 (Clean)</td>
+                  <td class="py-3"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">A+ Medical Grade</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">Q3 2026</td>
+                  <td class="py-3">12 May 2026</td>
+                  <td class="py-3 text-cyan-600 dark:text-cyan-400 font-bold">155 ppm</td>
+                  <td class="py-3">0.51 NTU</td>
+                  <td class="py-3 text-emerald-600 dark:text-emerald-400 font-bold">0 (Clean)</td>
+                  <td class="py-3"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">A+ Medical Grade</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">Q2 2026</td>
+                  <td class="py-3">18 Feb 2026</td>
+                  <td class="py-3 text-cyan-600 dark:text-cyan-400 font-bold">190 ppm</td>
+                  <td class="py-3">0.90 NTU</td>
+                  <td class="py-3 text-emerald-600 dark:text-emerald-400 font-bold">0 (Clean)</td>
+                  <td class="py-3"><span class="px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 font-bold">Grade A Potable</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">Q1 2025 (Baseline)</td>
+                  <td class="py-3">20 Nov 2025</td>
+                  <td class="py-3 text-amber-600 dark:text-amber-400 font-bold">240 ppm</td>
+                  <td class="py-3 text-amber-600 dark:text-amber-400">1.82 NTU</td>
+                  <td class="py-3 text-rose-600 dark:text-rose-400 font-bold">12 CFU (Pre-Clean)</td>
+                  <td class="py-3"><span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold">Remediated</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: ISO 9001:2015 & WHO COMPLIANCE CERTIFICATE
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sky-100 dark:border-sky-800 pb-4">
+            <div>
+              <h2 class="text-xl font-black text-black dark:text-white">
+                4. ISO 9001:2015 &amp; WHO Water Sanitation Certificate
+              </h2>
+              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+                Formal sanitary compliance document for property boards, HOAs, and tenant lease files.
+              </p>
+            </div>
+            <button onclick="showToast('Printing official framed compliance certificate...', 'success')" class="px-4 py-2 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs shadow-sm">
+              <i class="fas fa-print mr-1"></i> Print Certificate
+            </button>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-gradient-to-br from-cyan-50/50 to-teal-50/50 dark:from-cyan-950/20 dark:to-teal-950/20 border border-sky-200 dark:border-sky-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-teal-600 text-white flex items-center justify-center text-2xl font-black shadow-md shrink-0">
+                <i class="fas fa-award"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="font-black text-base text-black dark:text-white">Certificate of Microbial Sterilization</div>
+                <div class="text-xs font-semibold text-black dark:text-white">
+                  Serial: <strong class="text-cyan-600 dark:text-cyan-400">AQ-CERT-99042</strong> &bull; Valid Until: <strong>28 Feb 2027</strong>
+                </div>
+                <div class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                  Verified In Compliance with WHO Drinking Water Guidelines (4th Edition)
+                </div>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <div class="w-20 h-20 border-2 border-dashed border-sky-300 dark:border-sky-700 rounded-xl flex flex-col items-center justify-center text-[10px] font-bold text-black dark:text-white">
+                <i class="fas fa-qrcode text-xl mb-0.5 text-cyan-600 dark:text-cyan-400"></i>
+                <span>Scan QR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 4: SETTING RECURRING REMINDERS (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-reminders" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">Setting Recurring Reminders</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Configure automated proactive cleaning cycle alerts, multi-channel dispatch notices, family contacts, and calendar sync.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: RECURRING CADENCE SELECTOR
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              1. Automated Cleaning Cycle Cadence &amp; Frequency
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Select how often AquaPure should automatically schedule your mechanized sanitization visits.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <label class="p-4 rounded-2xl border-2 border-cyan-500 bg-cyan-50/50 dark:bg-cyan-950/20 cursor-pointer flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between">
+                <strong class="font-black text-sm text-black dark:text-white">Quarterly (Every 90 Days)</strong>
+                <i class="fas fa-circle-check text-cyan-600 dark:text-cyan-400 text-lg"></i>
+              </div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Recommended by WHO for domestic family storage. Prevents biofilm adhesion before bacterial colonies form.
+              </p>
+              <span class="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase">Current Active Setting</span>
+            </label>
+
+            <label class="p-4 rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#07131f] hover:border-cyan-400 cursor-pointer flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between">
+                <strong class="font-black text-sm text-black dark:text-white">Bi-Monthly (Every 60 Days)</strong>
+                <i class="far fa-circle text-sky-400 text-lg"></i>
+              </div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Ideal for borewell supply, high silt zones, or commercial properties with continuous water turnover.
+              </p>
+              <span class="text-[10px] font-bold text-black dark:text-white uppercase">High-Sediment Option</span>
+            </label>
+
+            <label class="p-4 rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#07131f] hover:border-cyan-400 cursor-pointer flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between">
+                <strong class="font-black text-sm text-black dark:text-white">Semi-Annual (Every 180 Days)</strong>
+                <i class="far fa-circle text-sky-400 text-lg"></i>
+              </div>
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed">
+                Suitable for secondary vacation homes or municipal treated soft-water storage tanks.
+              </p>
+              <span class="text-[10px] font-bold text-black dark:text-white uppercase">Economy Option</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: MULTI-CHANNEL DISPATCH NOTIFICATIONS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Multi-Channel Notification Channels &amp; Advance Lead-Time
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Choose your preferred dispatch channels and lead-time reminders before technicians arrive on site.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div class="space-y-0.5">
+                <div class="font-bold text-sm text-black dark:text-white">SMS Dispatch Alerts</div>
+                <div class="text-xs font-semibold text-black dark:text-white">+1 (408) 555-0192 (7 Days &amp; 24h Prior)</div>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 accent-cyan-600 rounded">
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div class="space-y-0.5">
+                <div class="font-bold text-sm text-black dark:text-white">Email Calendar Invites</div>
+                <div class="text-xs font-semibold text-black dark:text-white">vikram.sharma@gmail.com</div>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 accent-cyan-600 rounded">
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div class="space-y-0.5">
+                <div class="font-bold text-sm text-black dark:text-white">WhatsApp Live GPS Link</div>
+                <div class="text-xs font-semibold text-black dark:text-white">Real-time arrival tracking on day of service</div>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 accent-cyan-600 rounded">
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div class="space-y-0.5">
+                <div class="font-bold text-sm text-black dark:text-white">Advance Lead Time</div>
+                <div class="text-xs font-semibold text-black dark:text-white">Notify me 7 days and 24 hours before</div>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-black">7 Days</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: FAMILY & CO-RESIDENT RECIPIENTS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-sky-100 dark:border-sky-800 pb-4">
+            <div>
+              <h2 class="text-xl font-black text-black dark:text-white">
+                3. Household Notification Recipients
+              </h2>
+              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+                Family members and property caretakers who receive reminder copies.
+              </p>
+            </div>
+            <button onclick="showToast('Add family recipient modal opened.', 'info')" class="px-3.5 py-1.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs">
+              + Add Recipient
+            </button>
+          </div>
+
+          <div class="space-y-2.5">
+            <div class="p-3.5 rounded-2xl bg-sky-50/50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between text-xs font-semibold text-black dark:text-white">
+              <div class="flex items-center gap-3">
+                <img src="assets/images/avatar-1.jpg" alt="Vikram Sharma" class="w-8 h-8 rounded-full object-cover shrink-0 border border-cyan-500 shadow-sm">
+                <div>
+                  <strong class="font-black text-black dark:text-white block">Vikram Sharma (Primary Owner)</strong>
+                  <span>vikram.sharma@gmail.com &bull; +1 (408) 555-0192</span>
+                </div>
+              </div>
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold text-[11px]">Primary Contact</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-sky-50/50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between text-xs font-semibold text-black dark:text-white">
+              <div class="flex items-center gap-3">
+                <img src="assets/images/avatar-5.jpg" alt="Neha Sharma" class="w-8 h-8 rounded-full object-cover shrink-0 border border-teal-500 shadow-sm">
+                <div>
+                  <strong class="font-black text-black dark:text-white block">Neha Sharma (Co-Resident)</strong>
+                  <span>neha.sharma@gmail.com &bull; +1 (408) 555-0193</span>
+                </div>
+              </div>
+              <span class="text-cyan-600 dark:text-cyan-400 font-bold text-[11px]">WhatsApp &amp; SMS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: CALENDAR SYNC & 12-MONTH FORECAST
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              4. Calendar Sync Integration &amp; 12-Month Hygiene Forecast
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Synchronize your cleaning cycles with Google Calendar, Outlook, or Apple iCal.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pb-3">
+            <button onclick="showToast('Google Calendar direct sync activated! 4 cycles scheduled.', 'success')" class="px-4 py-2.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs flex items-center gap-2">
+              <i class="fab fa-google text-red-500"></i> Sync with Google Calendar
+            </button>
+            <button onclick="showToast('Apple iCal .ics downloaded.', 'success')" class="px-4 py-2.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs flex items-center gap-2">
+              <i class="fab fa-apple text-cyan-500"></i> Sync with Apple iCal
+            </button>
+            <button onclick="showToast('Outlook Calendar .ics downloaded.', 'success')" class="px-4 py-2.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs flex items-center gap-2">
+              <i class="fab fa-microsoft text-blue-500"></i> Sync with Outlook
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-black dark:text-white">
+            <div class="p-3 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+              <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold uppercase block">Cycle 1 (Scheduled)</span>
+              <strong class="font-black text-sm">28 Nov 2026</strong>
+              <div class="text-[10px] text-black dark:text-white mt-0.5">Alert on 21 Nov</div>
+            </div>
+            <div class="p-3 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+              <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold uppercase block">Cycle 2 (Forecast)</span>
+              <strong class="font-black text-sm">28 Feb 2027</strong>
+              <div class="text-[10px] text-black dark:text-white mt-0.5">Alert on 21 Feb</div>
+            </div>
+            <div class="p-3 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+              <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold uppercase block">Cycle 3 (Forecast)</span>
+              <strong class="font-black text-sm">28 May 2027</strong>
+              <div class="text-[10px] text-black dark:text-white mt-0.5">Alert on 21 May</div>
+            </div>
+            <div class="p-3 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+              <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold uppercase block">Cycle 4 (Forecast)</span>
+              <strong class="font-black text-sm">28 Aug 2027</strong>
+              <div class="text-[10px] text-black dark:text-white mt-0.5">Alert on 21 Aug</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 5: MANAGING INVOICES (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-invoices" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">Managing Invoices</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Download tax invoices, inspect payment receipts, review subscription status, and update payment methods.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: BILLING SUMMARY & SUBSCRIPTION STATUS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              1. Current Billing Summary &amp; Active Subscription Status
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-cyan-600 dark:text-cyan-400">Current Plan</span>
+              <div class="text-xl font-black text-black dark:text-white">Platinum AMC</div>
+              <div class="text-xs font-semibold text-black dark:text-white">$249.00 / Annual</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-teal-600 dark:text-teal-400">Payment Status</span>
+              <div class="text-xl font-black text-emerald-600 dark:text-emerald-400">All Paid Up</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Zero Outstanding Balance</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-purple-600 dark:text-purple-400">Contract Renewal</span>
+              <div class="text-xl font-black text-black dark:text-white">15 Aug 2027</div>
+              <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">10% Loyalty Lock Active</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">Hidden Surcharges</span>
+              <div class="text-xl font-black text-cyan-600 dark:text-cyan-400">$0.00 Extra</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Free Sludge Disposal</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: TRANSACTION & INVOICE HISTORY TABLE
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Transaction Ledger &amp; Tax Invoices
+            </h2>
+            <button onclick="showToast('Exporting all tax invoices to CSV...', 'success')" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline">
+              Export to CSV &darr;
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-semibold text-black dark:text-white">
+              <thead>
+                <tr class="border-b border-sky-200 dark:border-sky-800 text-[11px] font-black uppercase text-cyan-600 dark:text-cyan-400">
+                  <th class="py-2.5">Invoice #</th>
+                  <th class="py-2.5">Date</th>
+                  <th class="py-2.5">Description</th>
+                  <th class="py-2.5">Amount</th>
+                  <th class="py-2.5">Payment Method</th>
+                  <th class="py-2.5">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-sky-100 dark:divide-sky-800/60">
+                <tr>
+                  <td class="py-3 font-bold">#AQ-INV-2026-08</td>
+                  <td class="py-3">15 Aug 2026</td>
+                  <td class="py-3">Annual Platinum AMC Renewal (4 Visits Included)</td>
+                  <td class="py-3 font-black text-emerald-600 dark:text-emerald-400">$249.00</td>
+                  <td class="py-3">Visa ending &bull;&bull;&bull;&bull; 4242</td>
+                  <td class="py-3">
+                    <button onclick="showToast('Downloading Invoice #AQ-INV-2026-08...', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">PDF Receipt &darr;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">#AQ-INV-2026-05</td>
+                  <td class="py-3">12 May 2026</td>
+                  <td class="py-3">Pipeline Hydro-Pulse De-scaling Booster</td>
+                  <td class="py-3 font-black text-emerald-600 dark:text-emerald-400">$49.00</td>
+                  <td class="py-3">Visa ending &bull;&bull;&bull;&bull; 4242</td>
+                  <td class="py-3">
+                    <button onclick="showToast('Downloading Invoice #AQ-INV-2026-05...', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">PDF Receipt &darr;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">#AQ-INV-2026-02</td>
+                  <td class="py-3">18 Feb 2026</td>
+                  <td class="py-3">Bio-Organic Anti-Bacterial Fogging Service</td>
+                  <td class="py-3 font-black text-emerald-600 dark:text-emerald-400">$0.00 <span class="text-[10px] text-cyan-600 font-bold">(AMC Covered)</span></td>
+                  <td class="py-3">Plan Credit Applied</td>
+                  <td class="py-3">
+                    <button onclick="showToast('Downloading Zero-Voucher #AQ-INV-2026-02...', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">Voucher &darr;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-bold">#AQ-INV-2025-08</td>
+                  <td class="py-3">15 Aug 2025</td>
+                  <td class="py-3">Initial Property Inspection &amp; 7-Stage Deep Clean</td>
+                  <td class="py-3 font-black text-emerald-600 dark:text-emerald-400">$199.00</td>
+                  <td class="py-3">Mastercard &bull;&bull;&bull;&bull; 8810</td>
+                  <td class="py-3">
+                    <button onclick="showToast('Downloading Invoice #AQ-INV-2025-08...', 'success')" class="text-cyan-600 dark:text-cyan-400 hover:underline font-bold">PDF Receipt &darr;</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: SAVED PAYMENT METHODS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              3. Saved Payment Methods &amp; Auto-Pay
+            </h2>
+            <button onclick="showToast('Add new payment method form opened.', 'info')" class="px-3.5 py-1.5 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] text-black dark:text-white font-bold text-xs">
+              + Add Card
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl border-2 border-cyan-500 bg-cyan-50/40 dark:bg-cyan-950/20 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                <div class="text-xs font-semibold text-black dark:text-white">
+                  <strong class="font-black block text-sm">Visa ending in 4242</strong>
+                  <span>Expires 09/2029 &bull; Default Auto-Pay</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-bold">Primary</span>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#07131f] flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <i class="fab fa-cc-mastercard text-3xl text-orange-500"></i>
+                <div class="text-xs font-semibold text-black dark:text-white">
+                  <strong class="font-black block text-sm">Mastercard ending in 8810</strong>
+                  <span>Expires 12/2028 &bull; Backup</span>
+                </div>
+              </div>
+              <button onclick="showToast('Set as default card.', 'success')" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline">Make Default</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: TAX EXEMPTION & ANNUAL SPENDING EXPORT
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              4. Corporate Tax Details &amp; Annual Spending Summary
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Download annual statements for property maintenance tax deductions and commercial GST records.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+            <div class="space-y-0.5">
+              <strong class="font-black text-sm text-black dark:text-white block">2026 Fiscal Year Water Hygiene Statement</strong>
+              <span class="text-xs font-semibold text-black dark:text-white">Total Spent: $298.00 &bull; 4 Certified Mechanized Cleanings Completed</span>
+            </div>
+            <button onclick="showToast('Annual Statement for 2026 downloaded (PDF format with EIN #74-992102).', 'success')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-md shrink-0">
+              Download Annual Tax Summary &darr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 6: TANK & SUMP DETAILS (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-tanks" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">Tank &amp; Sump Inventory Details</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Registered residential water assets, structural materials, sensor capacities, and preventative health ratings.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: REGISTERED WATER ASSETS OVERVIEW
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              1. Registered Domestic Water Storage Assets
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="p-5 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-md bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 text-xs font-bold uppercase">
+                  Unit #01 &bull; Rooftop
+                </span>
+                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Optimal Condition</span>
+              </div>
+              <h3 class="text-lg font-black text-black dark:text-white">Overhead Rooftop Polyethylene Tank</h3>
+              <div class="space-y-2 text-xs font-semibold text-black dark:text-white">
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Capacity:</span> <strong>1,500 Liters</strong></div>
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Material:</span> <strong>Sintex 3-Layer Food-Grade Virgin Polymer</strong></div>
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Location:</span> <strong>Terrace Mount (Height: 8.5 meters)</strong></div>
+                <div class="flex justify-between py-1"><span>Next Scheduled Clean:</span> <strong class="text-cyan-600 dark:text-cyan-400">28 Nov 2026</strong></div>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-sky-50/70 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 text-xs font-bold uppercase">
+                  Unit #02 &bull; Underground
+                </span>
+                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Epoxy Sealed</span>
+              </div>
+              <h3 class="text-lg font-black text-black dark:text-white">Underground RCC Masonry Sump</h3>
+              <div class="space-y-2 text-xs font-semibold text-black dark:text-white">
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Capacity:</span> <strong>3,000 Liters</strong></div>
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Material:</span> <strong>Reinforced Concrete with Food-Grade Epoxy Coat</strong></div>
+                <div class="flex justify-between py-1 border-b border-sky-100 dark:border-sky-800"><span>Location:</span> <strong>Front Driveway Sub-level (Depth: 2.2 meters)</strong></div>
+                <div class="flex justify-between py-1"><span>Next Scheduled Clean:</span> <strong class="text-teal-600 dark:text-teal-400">28 Nov 2026</strong></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: SENSOR TELEMETRY & WATER CONSUMPTION
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Sensor Telemetry &amp; Real-Time Capacity Levels
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Ultrasonic depth sensor readings and household reserve calculations.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-cyan-600 dark:text-cyan-400">Overhead Tank Fill</span>
+              <div class="text-2xl font-black text-black dark:text-white">85% Full</div>
+              <div class="w-full bg-sky-200 dark:bg-sky-900 rounded-full h-2 mt-2">
+                <div class="bg-cyan-500 h-2 rounded-full" style="width: 85%"></div>
+              </div>
+              <div class="text-[10px] font-semibold text-black dark:text-white mt-1">1,275 Liters Potable</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-teal-600 dark:text-teal-400">Sump Water Level</span>
+              <div class="text-2xl font-black text-black dark:text-white">92% Full</div>
+              <div class="w-full bg-sky-200 dark:bg-sky-900 rounded-full h-2 mt-2">
+                <div class="bg-teal-500 h-2 rounded-full" style="width: 92%"></div>
+              </div>
+              <div class="text-[10px] font-semibold text-black dark:text-white mt-1">2,760 Liters Storage</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-purple-600 dark:text-purple-400">Daily Average Use</span>
+              <div class="text-2xl font-black text-black dark:text-white">480 L / Day</div>
+              <div class="text-xs font-semibold text-black dark:text-white">4 Occupants (120L/person)</div>
+              <div class="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">Well Within Normal Usage</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">Emergency Clean Reserve</span>
+              <div class="text-2xl font-black text-cyan-600 dark:text-cyan-400">8.4 Days</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Municipal Cutoff Safety</div>
+              <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">Secure Reserve</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: STRUCTURAL INTEGRITY ASSESSMENT
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-4">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              3. Structural Integrity &amp; Valve Inspection Checklist
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Health audit logged during last physical visit by certified technician Alex Mercer.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-black dark:text-white">
+            <div class="p-3.5 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div>
+                <strong class="font-bold block text-sm">Polymer UV Degradation</strong>
+                <span>Rooftop tank outer shell inspection</span>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">98% Intact</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div>
+                <strong class="font-bold block text-sm">Sump Concrete Fissures</strong>
+                <span>Underground wall groundwater seepage check</span>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Zero Cracks</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div>
+                <strong class="font-bold block text-sm">Air Vent 40-Mesh Bug Screen</strong>
+                <span>Mosquito and debris ingress barrier</span>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Screen Intact</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-sky-50 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+              <div>
+                <strong class="font-bold block text-sm">Automatic Brass Float Ball Valve</strong>
+                <span>Cutoff mechanism &amp; anti-overflow function</span>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Tested 100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: REGISTER NEW STORAGE ASSET
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              4. Register Additional Storage Unit or Modify Specs
+            </h2>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+              Installed a new tank or rainwater harvester? Add it to your customer inventory for synchronized AMC cleanings.
+            </p>
+          </div>
+
+          <form onsubmit="event.preventDefault(); showToast('New storage unit registered and linked to your AMC coverage.', 'success');" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Asset Type</label>
+                <select class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+                  <option>Overhead Rooftop Tank</option>
+                  <option>Underground Sump</option>
+                  <option>Loft / Internal Tank</option>
+                  <option>Rainwater Harvesting Sump</option>
+                </select>
+              </div>
+
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Capacity in Liters</label>
+                <input type="number" placeholder="e.g. 2000" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Material Composition</label>
+                <select class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+                  <option>Sintex / Polyethylene</option>
+                  <option>RCC Masonry Concrete</option>
+                  <option>Stainless Steel SS304</option>
+                  <option>Fiberglass Reinforced (FRP)</option>
+                </select>
+              </div>
+
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Location On Property</label>
+                <input type="text" placeholder="e.g. Terrace East Wing" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+              <button type="submit" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-md">
+                Register New Storage Unit
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================
+           TAB VIEW 7: MY PROFILE (4 Content Sections)
+           ====================================================================== -->
+      <div id="tab-profile" class="dashboard-tab-pane hidden space-y-8">
+        
+        <div class="pb-4 border-b border-sky-200 dark:border-sky-800">
+          <h1 class="text-3xl font-black text-black dark:text-white">My Profile &amp; Account Settings</h1>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white mt-1">
+            Manage personal customer credentials, property address, multi-factor security, and communication preferences.
+          </p>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 1: PERSONAL CREDENTIALS & CONTACT INFO
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              1. Personal Credentials &amp; Contact Details
+            </h2>
+          </div>
+
+          <form onsubmit="event.preventDefault(); showToast('Profile updated successfully.', 'success');" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Full Name</label>
+                <input type="text" value="Vikram Sharma" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Email Address</label>
+                <input type="email" value="vikram.sharma@gmail.com" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Mobile Phone Number</label>
+                <input type="tel" value="+1 (408) 555-0192" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Customer Account ID</label>
+                <input type="text" readonly value="#AQ-4921 (Verified AMC Member)" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-100/60 dark:bg-[#07131f] text-cyan-600 dark:text-cyan-400 text-xs font-black">
+              </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+              <button type="submit" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-md">
+                Update Profile Credentials
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 2: REGISTERED PROPERTY ADDRESS & ACCESS
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              2. Registered Property Address &amp; Service Van Instructions
+            </h2>
+          </div>
+
+          <div class="space-y-4">
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-black dark:text-white">Primary Service Street Address</label>
+              <input type="text" value="42 Blossom Valley Way, Sunnyvale, CA 94087" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Gate Access Code / Entry Note</label>
+                <input type="text" value="Gate Code: #4492 &bull; Terrace access via North Staircase" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-black dark:text-white">Nearest Landmark</label>
+                <input type="text" value="Opposite Sunnyvale Community Park &amp; Tennis Courts" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 3: SECURITY, PASSWORD & TWO-FACTOR AUTH (2FA)
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              3. Security, Password &amp; Two-Factor Authentication (2FA)
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-black dark:text-white">Current Password</label>
+              <input type="password" placeholder="••••••••" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-black dark:text-white">New Password</label>
+              <input type="password" placeholder="Min 8 characters" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-black dark:text-white">Confirm New Password</label>
+              <input type="password" placeholder="Re-type password" class="w-full p-3 rounded-xl border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-[#07131f] text-black dark:text-white text-xs font-semibold">
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800">
+            <div>
+              <strong class="text-sm font-black text-black dark:text-white block">Two-Factor Authentication (SMS OTP)</strong>
+              <span class="text-xs font-semibold text-black dark:text-white">A 6-digit verification code is required when signing in from an unknown device.</span>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-xs font-bold">Enabled</span>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SECTION 4: PRIVACY, DATA & DEDICATED HYGIENE ADVISOR
+             -------------------------------------------------------------------- -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm space-y-5">
+          <div class="border-b border-sky-100 dark:border-sky-800 pb-4">
+            <h2 class="text-xl font-black text-black dark:text-white">
+              4. Privacy Management &amp; Dedicated Hygiene Advisor
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-bold text-xs">
+                <i class="fas fa-user-tie"></i> Dedicated Account Advisor
+              </div>
+              <div class="font-black text-sm text-black dark:text-white">Sophia Chen &bull; Lead Hygiene Officer</div>
+              <p class="text-xs font-semibold text-black dark:text-white">
+                Direct phone: +1 (408) 555-0188 &bull; Direct email: sophia.chen@aquapure.com
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/60 dark:bg-[#07131f] border border-sky-200 dark:border-sky-800 space-y-2">
+              <div class="flex items-center gap-2 text-teal-600 dark:text-teal-400 font-bold text-xs">
+                <i class="fas fa-file-export"></i> CCPA / GDPR Data Export
+              </div>
+              <div class="font-black text-sm text-black dark:text-white">Export Complete History</div>
+              <p class="text-xs font-semibold text-black dark:text-white">
+                Download all historical service logs, water quality certificates, and digital invoice files.
+              </p>
+              <button onclick="showToast('Exporting account archives to ZIP package...', 'success')" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline">Download Archive &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function switchDashboardTab(targetTabId) {
+      // Hide all panes
+      document.querySelectorAll('.dashboard-tab-pane').forEach(pane => {
+        pane.classList.add('hidden');
+      });
+
+      // Show target pane
+      const target = document.getElementById(targetTabId);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Reset all nav buttons in sidebar
+      const navButtons = document.querySelectorAll('#dashboard-sidebar-nav button');
+      navButtons.forEach(btn => {
+        btn.className = 'w-full flex items-center justify-between px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#142942] text-left';
+      });
+
+      // Highlight active button
+      const activeBtn = document.getElementById('nav-btn-' + targetTabId);
+      if (activeBtn) {
+        activeBtn.className = 'w-full flex items-center justify-between px-4 py-3 rounded-2xl font-bold text-xs sm:text-sm transition-all bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-md text-left';
+      }
+    }
+  </script>
+</body>
+</html>

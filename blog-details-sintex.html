@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Rooftop Black Sintex Tanks Turn into High-Heat Microbial Incubators | AquaPure Science &amp; Health Insights</title>
+  <meta name="description" content="Black polyethylene tanks absorb immense solar radiation during sunny months. As internal water temperatures surge past 42°C, your rooftop tank stops being ...">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white dark:bg-[#07131f] text-black dark:text-white min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- ==========================================================================
+       SECTION 1: STICKY HEADER NAVIGATION
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#07131f]/95 backdrop-blur-md border-b border-sky-200 dark:border-sky-900 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <i class="fas fa-droplet text-xl"></i>
+          </div>
+          <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+            <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+            <span class="text-black dark:text-white">Pure</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-bold">
+          <a href="index.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Home</a>
+          <a href="about.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About Us</a>
+          <a href="services.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Services</a>
+          <a href="pricing.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pricing</a>
+          <a href="book-service.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Book Service</a>
+          <a href="amc-membership.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">AMC Membership</a>
+          <a href="blog.html" class="whitespace-nowrap text-cyan-600 dark:text-cyan-400 font-black transition-colors">Blog</a>
+          <a href="contact.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
+          <a href="dashboard.html" class="whitespace-nowrap text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Dashboard</a>
+        </nav>
+
+                <!-- Right Side Utility Controls -->
+        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+            <i class="theme-toggle-icon fas fa-moon text-sm"></i>
+          </button>
+
+          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+            <i class="fas fa-arrow-right-arrow-left text-xs"></i>
+            <span class="rtl-toggle-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+            <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
+            <span>Sign In</span>
+          </a>
+
+          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+            <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER (Right Side Drawer - Matches Reference Image)
+       ========================================================================== -->
+  <!-- Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300"></div>
+
+  <!-- Off-Canvas Right Drawer -->
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-[290px] sm:w-[330px] max-w-[85vw] h-full h-screen h-[100dvh] bg-white dark:bg-[#07131f] border-l border-sky-200 dark:border-sky-800 z-50 flex flex-col justify-between shadow-2xl transform translate-x-full hidden transition-transform duration-300 overflow-hidden">
+    
+    <!-- Drawer Top Bar (Logo on left, Close X on right) -->
+    <div class="flex items-center justify-between px-5 pt-5 pb-3 border-b border-sky-100 dark:border-sky-800 shrink-0 bg-white dark:bg-[#07131f]">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+          <i class="fas fa-droplet text-base"></i>
+        </div>
+        <div class="flex items-center gap-1 text-xl font-black tracking-tight">
+          <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+          <span class="text-black dark:text-white">Pure</span>
+        </div>
+      </a>
+      <button id="mobile-menu-close" class="w-9 h-9 rounded-xl flex items-center justify-center text-black dark:text-white hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors" aria-label="Close Mobile Menu">
+        <i class="fas fa-xmark text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation List (Scrollable Middle Area) -->
+    <nav class="flex-1 overflow-y-auto px-5 py-3 space-y-1">
+      
+      <!-- 1. Home (Dropdown Accordion) -->
+      <div>
+        <button class="mobile-dropdown-btn w-full flex items-center justify-between py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors text-left">
+          <span>Home</span>
+          <i class="fas fa-chevron-down text-xs text-black/60 dark:text-white/60 mobile-dropdown-arrow transition-transform duration-200"></i>
+        </button>
+        <div class="hidden pl-3 pr-1 py-1 space-y-1">
+          <a href="index.html" class="block p-2 rounded-xl bg-sky-50 dark:bg-[#0c1e33] text-sm font-semibold text-cyan-600 dark:text-cyan-400 transition-colors">
+            AquaPure Landing
+          </a>
+          <a href="home-family.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            Family Safe Home
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. About Us -->
+      <a href="about.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        About Us
+      </a>
+
+      <!-- 3. Services -->
+      <a href="services.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Services
+      </a>
+
+      <!-- 4. Pricing -->
+      <a href="pricing.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Pricing
+      </a>
+
+      <!-- 5. Explore (Dropdown Accordion) -->
+      <div>
+        <button class="mobile-dropdown-btn w-full flex items-center justify-between py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors text-left">
+          <span>Explore</span>
+          <i class="fas fa-chevron-down text-xs text-black/60 dark:text-white/60 mobile-dropdown-arrow transition-transform duration-200"></i>
+        </button>
+        <div class="hidden pl-3 pr-1 py-1 space-y-1">
+          <a href="book-service.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            Book Service Page
+          </a>
+          <a href="amc-membership.html" class="block p-2 rounded-xl bg-cyan-50/70 dark:bg-[#0c1e33] border border-cyan-200 dark:border-cyan-800 text-sm font-semibold text-cyan-600 dark:text-cyan-400 transition-colors">
+            AMC Membership
+          </a>
+          <a href="service-details.html" class="block p-2 rounded-xl hover:bg-sky-50 dark:hover:bg-[#0c1e33] text-sm font-semibold text-black dark:text-white transition-colors">
+            7-Stage Deep Clean
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Blog -->
+      <a href="blog.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Blog
+      </a>
+
+      <!-- 7. Contact Us -->
+      <a href="contact.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Contact Us
+      </a>
+
+      <!-- 8. Dashboard -->
+      <a href="dashboard.html" class="block py-2 px-3 rounded-xl text-base font-bold text-black dark:text-white hover:bg-sky-50 dark:hover:bg-[#0c1e33] transition-colors">
+        Dashboard
+      </a>
+
+    </nav>
+
+    <!-- Bottom Actions: Sign In / Register + Mobile Settings (Pinned to Bottom, Zero Gap Below) -->
+    <div class="px-5 pt-3 pb-6 border-t border-sky-100 dark:border-sky-800 space-y-3 shrink-0 bg-white dark:bg-[#07131f]">
+      <a href="login-register.html" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white font-black text-center text-sm shadow-md block transition-all active:scale-[0.99]">
+        Sign In / Register
+      </a>
+
+      <!-- Mobile Settings Toggles -->
+      <div class="flex items-center justify-between pt-2 border-t border-sky-100 dark:border-sky-800 text-sm font-bold text-black dark:text-white">
+        <span>Settings:</span>
+        <div class="flex items-center gap-2">
+          <button class="theme-toggle w-10 h-10 rounded-2xl bg-sky-100 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex items-center justify-center text-black dark:text-white hover:border-cyan-500 transition-all shadow-sm" title="Toggle Light / Dark Mode">
+            <i class="theme-toggle-icon fas fa-moon text-sm"></i>
+          </button>
+          <button class="rtl-toggle px-3.5 py-2 rounded-2xl bg-sky-100 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex items-center gap-1.5 text-xs font-bold text-black dark:text-white hover:border-cyan-500 transition-all shadow-sm" title="Toggle RTL / LTR">
+            <i class="fas fa-arrow-left text-xs"></i>
+            <span class="rtl-toggle-text">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <main class="flex-1">
+
+    <!-- ==========================================================================
+         SECTION 2: BREADCRUMBS & ARTICLE HERO HEADER
+         ========================================================================== -->
+    <section class="py-12 bg-gradient-to-b from-sky-100/60 to-[#f0f9ff] dark:from-[#08182b] dark:to-[#07131f] border-b border-sky-200 dark:border-sky-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        
+        <!-- Breadcrumb Links -->
+        <nav class="flex items-center gap-2 text-xs font-bold text-black dark:text-white">
+          <a href="index.html" class="hover:text-cyan-600">Home</a>
+          <i class="fas fa-chevron-right text-[10px] text-cyan-600"></i>
+          <a href="blog.html" class="hover:text-cyan-600">Blog Archive</a>
+          <i class="fas fa-chevron-right text-[10px] text-cyan-600"></i>
+          <span class="text-cyan-600 dark:text-cyan-400">Thermal Microbiology</span>
+        </nav>
+
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-3.5 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 text-xs font-black uppercase tracking-wider">
+              Thermal Microbiology
+            </span>
+            <span class="text-xs font-bold text-black dark:text-white flex items-center gap-1.5">
+              <i class="fas fa-clock text-cyan-600"></i> 6 Min Read
+            </span>
+            <span class="text-xs font-bold text-black dark:text-white flex items-center gap-1.5">
+              <i class="fas fa-certificate text-teal-600"></i> Lab Peer-Reviewed
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-black dark:text-white leading-tight">
+            Why Rooftop Black Sintex Tanks Turn into High-Heat Microbial Incubators
+          </h1>
+
+          <p class="text-base sm:text-lg font-medium text-black dark:text-white leading-relaxed">
+            Black polyethylene tanks absorb immense solar radiation during sunny months. As internal water temperatures surge past 42°C, your rooftop tank stops being a passive container and transforms into an incubator for thermophilic bacteria and toxic algal strains.
+          </p>
+
+          <!-- Author Byline Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-sky-200 dark:border-sky-800">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/avatar-1.jpg" alt="Marcus Vance, M.Sc." class="w-12 h-12 rounded-full object-cover shrink-0 border-2 border-cyan-500 shadow-md">
+              <div>
+                <div class="text-sm font-black text-black dark:text-white">Marcus Vance, M.Sc.</div>
+                <div class="text-xs font-semibold text-black dark:text-white">Principal Sanitation Engineer • Infrastructure Water Systems</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-black dark:text-white mr-1">Share:</span>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-cyan-600 hover:scale-110 transition-transform"><i class="fab fa-facebook-f text-xs"></i></a>
+              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-cyan-600 hover:scale-110 transition-transform"><i class="fab fa-x-twitter text-xs"></i></a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-cyan-600 hover:scale-110 transition-transform"><i class="fab fa-linkedin-in text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: FEATURED HIGH-RESOLUTION ARTICLE HERO IMAGE
+         ========================================================================== -->
+    <section class="py-8 bg-white dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900 transition-colors">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-sky-200 dark:border-sky-800 relative group bg-sky-100 dark:bg-sky-950">
+          <div class="relative h-72 sm:h-96 lg:h-[450px] overflow-hidden">
+            <img src="assets/images/blog-sintex-tanks.png" alt="Four rooftop black Sintex polyethylene water storage tanks under direct sunlight certified to IS 12701" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white">
+              <div class="space-y-1">
+                <span class="px-3 py-1 rounded-full bg-cyan-600 text-white text-xs font-bold uppercase tracking-wider inline-block">
+                  Field Investigation Photo
+                </span>
+                <p class="text-xs sm:text-sm font-semibold text-white/90 drop-shadow-md max-w-xl">
+                  Four certified black Sintex polyethylene water tanks installed on a residential terrace, exposed to intense ambient ultraviolet and solar radiation that accelerates water temperature.
+                </p>
+              </div>
+              <span class="text-xs font-bold text-white/80 shrink-0">
+                <i class="fas fa-camera mr-1"></i> Verified Field Audit
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: EXECUTIVE LAB SUMMARY & KEY TAKEAWAYS
+         ========================================================================== -->
+    <section class="py-10 bg-white dark:bg-[#07131f] border-b border-sky-200 dark:border-sky-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="p-6 sm:p-8 rounded-3xl bg-sky-50 dark:bg-[#0c1e33] border-2 border-cyan-500/30 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center text-lg font-bold">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h2 class="text-xl font-black text-black dark:text-white">Executive Lab Summary &amp; Key Takeaways</h2>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+            
+            <li class="flex items-start gap-2.5">
+              <i class="fas fa-circle-check text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>Solar Greenhouse Effect: Black carbon-pigmented polymer absorbs infrared heat, elevating water temperature 8°C to 14°C above ambient air.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fas fa-circle-check text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>Optimal Incubation Zone: Temperatures between 35°C and 45°C trigger exponential multiplication of Legionella and Pseudomonas colonies.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fas fa-circle-check text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>Polymer Outgassing: Uncleaned overheated tanks break down stagnant organic sludge into foul anaerobic hydrogen sulfide gas.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fas fa-circle-check text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>Preventive Protocol: Regular quarterly sediment extraction combined with food-grade sanitizing mist prevents thermal biofilm adherence.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: IN-DEPTH SCIENTIFIC ANALYSIS & ROOT CAUSE MECHANISMS
+         ========================================================================== -->
+    <section class="py-12 bg-white dark:bg-[#07131f]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <span class="text-xs font-black uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Section 1: Microbiology &amp; Engineering</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-black dark:text-white">Thermal Dynamics and Bacterial Kinetics in Rooftop Polymer Storage</h2>
+        
+        <p class="text-sm sm:text-base font-semibold text-black dark:text-white leading-relaxed">
+          Rooftop water storage tanks are exposed to continuous solar ultraviolet and infrared irradiation throughout daylight hours. Polyethylene resin compounded with carbon black is designed to resist UV embrittlement, but this dark pigmentation turns the reservoir into a thermal sponge.
+        </p>
+        <p class="text-sm sm:text-base font-semibold text-black dark:text-white leading-relaxed">
+          In hot seasons, standing water inside the upper half of the tank regularly reaches 44°C. At this temperature, dissolved oxygen levels plunge dramatically, creating a micro-aerobic stratified layer where anaerobic bacteria thrive at triple their standard reproductive rates.
+        </p>
+        <p class="text-sm sm:text-base font-semibold text-black dark:text-white leading-relaxed">
+          Homeowners who shower or brush their teeth in the evening are directly inhaling warm, aerosolized water droplets laden with thermophilic bacteria. Mechanized high-pressure descaling completely strips the organic nutrient film that these bacteria feed upon.
+        </p>
+        
+        <div class="p-6 rounded-2xl bg-[#f0f9ff] dark:bg-[#08182b] border border-sky-200 dark:border-sky-800 space-y-2">
+          <div class="text-xs font-black uppercase text-cyan-600 dark:text-cyan-400">Microbiological Observation</div>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed italic">
+            "When ambient temperature is 32°C, a black rooftop tank floor can easily register 45°C. At that threshold, bacterial doubling times drop from hours to under 22 minutes."
+          </p>
+          <div class="text-[11px] font-bold text-black dark:text-white">— Journal of Applied Water Science &amp; Hygiene, 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: LABORATORY PARAMETERS & INSPECTION COMPARISON TABLE
+         ========================================================================== -->
+    <section class="py-12 bg-[#f0f9ff] dark:bg-[#08182b] border-t border-b border-sky-200 dark:border-sky-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="text-center space-y-2">
+          <span class="text-xs font-black uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Diagnostic Data</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-black dark:text-white">Water Temperature vs. Microbial Colony Growth in Rooftop Sintex Tanks</h2>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white max-w-xl mx-auto">
+            Tested using digital photometers, atomic absorption spectroscopy, and NABL certified culture plate cultivation.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-sky-200 dark:border-sky-800 shadow-md">
+          <table class="w-full text-left text-xs font-semibold text-black dark:text-white bg-white dark:bg-[#0c1e33]">
+            <thead class="bg-sky-50 dark:bg-[#08182b] border-b border-sky-200 dark:border-sky-800 text-cyan-600 dark:text-cyan-400 uppercase text-[11px] font-black">
+              <tr>
+                <th class="py-3 px-4">Internal Tank Temp</th><th class="py-3 px-4">Bacterial Doubling Time</th><th class="py-3 px-4">Predominant Microbial Flora</th><th class="py-3 px-4">Health Risk Rating</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-sky-100 dark:divide-sky-800">
+              
+              <tr>
+                <td class="py-3.5 px-4 font-bold">20°C - 25°C (Cool Morning)</td>
+                <td class="py-3.5 px-4 text-rose-600 dark:text-rose-400 font-bold">120 Minutes</td>
+                <td class="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-bold">Background Soil Microbes</td>
+                <td class="py-3.5 px-4 text-cyan-600 dark:text-cyan-400 font-bold">Low Risk</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">26°C - 34°C (Midday Normal)</td>
+                <td class="py-3.5 px-4 text-rose-600 dark:text-rose-400 font-bold">45 Minutes</td>
+                <td class="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-bold">Coliforms, Pseudomonas</td>
+                <td class="py-3.5 px-4 text-cyan-600 dark:text-cyan-400 font-bold">Moderate Risk</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">35°C - 44°C (Peak Afternoon Heat)</td>
+                <td class="py-3.5 px-4 text-rose-600 dark:text-rose-400 font-bold">18 Minutes</td>
+                <td class="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-bold">Legionella pneumophila, Biofilm Strains</td>
+                <td class="py-3.5 px-4 text-cyan-600 dark:text-cyan-400 font-bold">Severe Health Hazard</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">Post 7-Stage UV Clean</td>
+                <td class="py-3.5 px-4 text-rose-600 dark:text-rose-400 font-bold">Inactivated (>99.99%)</td>
+                <td class="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-bold">Sterile / Non-viable Pathogens</td>
+                <td class="py-3.5 px-4 text-cyan-600 dark:text-cyan-400 font-bold">Medical Grade Safe</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: AUTHOR BIO & WATER HYGIENE CONSULTATION CTA BANNER
+         ========================================================================== -->
+    <section class="py-16 bg-white dark:bg-[#07131f] border-t border-sky-200 dark:border-sky-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Author Profile Card -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-teal-600 text-white font-black text-2xl flex items-center justify-center shadow-lg shrink-0">
+            MV
+          </div>
+          <div class="space-y-2 text-center sm:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 text-xs font-bold uppercase">
+              Article Author &bull; Technical Specialist
+            </div>
+            <h3 class="text-xl font-black text-black dark:text-white">Marcus Vance, M.Sc.</h3>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+              Principal Sanitation Engineer • Infrastructure Water Systems. Conducts clinical microbiology investigations, municipal water pipeline testing, and mechanical sanitation audits across residential complexes and institutional healthcare facilities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Consultation CTA Callout -->
+        <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-cyan-600 via-sky-600 to-teal-600 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center sm:text-left max-w-xl">
+            <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-black uppercase tracking-wider inline-block">
+              Immediate Preventive Action
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Schedule Your 7-Stage Deep Clean Today</h3>
+            <p class="text-xs sm:text-sm font-semibold text-white/90 leading-relaxed">
+              Eliminate dangerous tank silt and biofilms before they reach your taps. Includes free certified laboratory water purity testing and post-clean photo audit.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+            <a href="book-service.html" class="px-6 py-3.5 rounded-xl bg-white text-[#042f2e] font-black text-xs sm:text-sm shadow-xl hover:bg-sky-50 transition-all text-center">
+              Book Cleaning Visit &rarr;
+            </a>
+            <a href="pricing.html" class="px-5 py-3.5 rounded-xl border border-white/40 hover:bg-white/10 text-white font-bold text-xs sm:text-sm transition-all text-center">
+              View Pricing
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       STANDARDIZED FOOTER (With Deep Links to All Services)
+       ========================================================================== -->
+  <footer class="bg-white dark:bg-[#07131f] border-t border-sky-200 dark:border-sky-900 text-black dark:text-white pt-16 pb-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-sky-200 dark:border-sky-800">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-teal-500 flex items-center justify-center text-white shadow-md">
+              <i class="fas fa-droplet text-xl"></i>
+            </div>
+            <div class="flex items-center gap-1 text-2xl font-black tracking-tight">
+              <span class="text-cyan-600 dark:text-cyan-400">Aqua</span>
+              <span class="text-black dark:text-white">Pure</span>
+            </div>
+          </a>
+          <p class="text-xs sm:text-sm font-semibold text-black dark:text-white max-w-sm leading-relaxed">
+            Professional mechanized overhead tank and underground sump cleaning services. 7-stage deep disinfection, UV sterilization, and lab-tested drinking water safety for homes and communities.
+          </p>
+          <div class="flex items-center gap-3 pt-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="X">
+              <i class="fab fa-x-twitter text-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-sky-300 dark:border-sky-700 flex items-center justify-center text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Navigation</h4>
+          <ul class="space-y-2 text-xs sm:text-sm font-semibold text-black dark:text-white">
+            <li><a href="index.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">AquaPure Landing</a></li>
+            <li><a href="home-family.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Family Safe Home</a></li>
+            <li><a href="about.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Services</a></li>
+            <li><a href="pricing.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pricing</a></li>
+            <li><a href="blog.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact Us</a></li>
+            <li><a href="dashboard.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Services</h4>
+          <ul class="space-y-2 text-xs sm:text-sm font-semibold text-black dark:text-white">
+            <li><a href="services.html#overhead-tank" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Overhead Tank Cleaning</a></li>
+            <li><a href="services.html#underground-sump" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Underground Sump Cleaning</a></li>
+            <li><a href="services.html#disinfection" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">UV Bio-Sanitization</a></li>
+            <li><a href="services.html#pipeline-flushing" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pipeline De-scaling</a></li>
+            <li><a href="service-details.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">7-Stage Deep Clean</a></li>
+            <li><a href="amc-membership.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">AMC Memberships</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Address (42 Blossom Valley Way, Sunnyvale, CA 94087) -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-black dark:text-white">Office Location</h4>
+          <div class="space-y-2 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+            <p class="flex items-start gap-2">
+              <i class="fas fa-location-dot text-cyan-600 dark:text-cyan-400 mt-1 shrink-0"></i>
+              <span>42 Blossom Valley Way, Sunnyvale, CA 94087</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fas fa-phone text-cyan-600 dark:text-cyan-400 shrink-0"></i>
+              <span>+1 (408) 555-0192</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fas fa-envelope text-cyan-600 dark:text-cyan-400 shrink-0"></i>
+              <span>support@aquapure.com</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 text-center text-xs font-bold text-black dark:text-white">
+        &copy; 2026 AquaPure Technologies Inc. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
