@@ -14,11 +14,62 @@
   --color-accent: #06b6d4;
 }
 
+/* Base Root & Background Colors - Prevents Canvas White Glitch */
+html {
+  color-scheme: light;
+  background-color: #f0f9ff;
+  color: #000000;
+}
+html.dark {
+  color-scheme: dark;
+  background-color: #07131f;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   NATIVE DATE / TIME PICKER CALENDAR INDICATOR (DARK MODE VISIBILITY)
+   Ensures the native calendar picker icon is bright white, clear, and visible in Dark Mode
+   ========================================================================== */
+html.dark input[type="date"],
+html.dark input[type="time"],
+html.dark input[type="datetime-local"],
+html.dark input[type="month"] {
+  color-scheme: dark !important;
+}
+
+html.dark input[type="date"]::-webkit-calendar-picker-indicator,
+html.dark input[type="time"]::-webkit-calendar-picker-indicator,
+html.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html.dark input[type="month"]::-webkit-calendar-picker-indicator,
+html.dark #contact-date::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+html:not(.dark) input[type="date"],
+html:not(.dark) input[type="time"],
+html:not(.dark) input[type="datetime-local"],
+html:not(.dark) input[type="month"] {
+  color-scheme: light !important;
+}
+
+html:not(.dark) input[type="date"]::-webkit-calendar-picker-indicator,
+html:not(.dark) input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer !important;
+  opacity: 0.8 !important;
+}
+
 body {
   font-family: var(--font-primary);
   scroll-behavior: smooth;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #f0f9ff;
+  color: #000000;
+}
+html.dark body {
+  background-color: #07131f;
+  color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -212,14 +263,28 @@ html.dark .text-accent-teal {
   min-height: 100vh !important;
   min-height: 100dvh !important;
   max-height: 100vh !important;
+  max-height: 100dvh !important;
   width: 290px !important;
   max-width: 85vw !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
+  overflow: hidden !important;
   z-index: 100 !important;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease !important;
   box-shadow: -10px 0 30px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+#mobile-menu nav {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+#mobile-menu > div:last-child {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
 }
 
 @media (min-width: 640px) {
@@ -302,15 +367,18 @@ html.dark .text-accent-teal {
   pointer-events: none;
 }
 
-/* Toast Notification Styles */
+/* Toast Notification Styles (Top-Right Popups) */
 #toast-container {
   position: fixed;
-  bottom: 24px;
+  top: 24px;
   right: 24px;
   z-index: 99999;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 90vw;
+  width: 380px;
+  pointer-events: none;
 }
 [dir="rtl"] #toast-container {
   right: auto;
@@ -318,16 +386,31 @@ html.dark .text-accent-teal {
 }
 
 .toast-item {
-  animation: slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+  animation: slideInToastTopRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes slideInToast {
+@keyframes slideInToastTopRight {
   from {
-    transform: translateY(100%);
+    transform: translateX(100%);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+[dir="rtl"] .toast-item {
+  animation-name: slideInToastTopLeft;
+}
+@keyframes slideInToastTopLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
 }

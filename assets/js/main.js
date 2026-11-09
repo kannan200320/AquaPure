@@ -36,10 +36,35 @@ function initTheme() {
   const themeToggles = document.querySelectorAll('.theme-toggle');
   themeToggles.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Freeze all transitions for 50ms during theme toggle to completely eliminate white paint glitch/flash
+      const freezeStyle = document.createElement('style');
+      freezeStyle.type = 'text/css';
+      freezeStyle.appendChild(
+        document.createTextNode(
+          `*, *::before, *::after {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }`
+        )
+      );
+      document.head.appendChild(freezeStyle);
+
       document.documentElement.classList.toggle('dark');
       const isDark = document.documentElement.classList.contains('dark');
       localStorage.setItem('aquapure-theme', isDark ? 'dark' : 'light');
       updateThemeIcons();
+
+      // Force synchronous reflow
+      const _ = window.getComputedStyle(freezeStyle).opacity;
+
+      setTimeout(() => {
+        if (freezeStyle.parentNode) {
+          freezeStyle.parentNode.removeChild(freezeStyle);
+        }
+      }, 50);
     });
   });
 }
@@ -436,6 +461,27 @@ function initBlogFilter() {
    9. INTERACTIVE FORMS & DEMO ACTIONS
    ========================================================================== */
 function initForms() {
+  // ==========================================================================
+  // Date Picker Future Dates Only (Disallow Past / Existing Dates)
+  // ==========================================================================
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const todayStr = `${year}-${month}-${day}`;
+
+  const dateInputs = document.querySelectorAll('input[type="date"]');
+  dateInputs.forEach(dateInput => {
+    dateInput.setAttribute('min', todayStr);
+
+    dateInput.addEventListener('change', () => {
+      if (dateInput.value && dateInput.value < todayStr) {
+        showToast('Please select a valid upcoming date. Past dates are not accepted.', 'error');
+        dateInput.value = '';
+      }
+    });
+  });
+
   // Service Booking Form
   const bookingForm = document.getElementById('service-booking-form');
   if (bookingForm) {
@@ -448,15 +494,225 @@ function initForms() {
     });
   }
 
-  // Contact Form
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  // ==========================================================================
+  // STEP-BY-STEP FORM VALIDATION ENGINE (Top-Right Popups)
+  // Enforces Name (no numbers, >=2 chars), Phone (no letters, 10 digits),
+  // Email (name@gmail.com), Address (at least 15-20 characters)
+  // ==========================================================================
+  function setupStepByStepForm(formId, config) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const nameInput = document.getElementById(config.nameId);
+    const phoneInput = document.getElementById(config.phoneId);
+    const emailInput = document.getElementById(config.emailId);
+    const addressInput = document.getElementById(config.addressId);
+
+    function validateNameField(showPopup = true) {
+      if (!nameInput) return true;
+      const val = nameInput.value.trim();
+      if (!val || val.length < 2 || /\d/.test(val)) {
+        if (showPopup) {
+          showToast('Full Name must be at least 2 characters and contain no numbers.', 'error');
+        }
+        nameInput.classList.add('border-rose-500', 'ring-2', 'ring-rose-500');
+        nameInput.classList.remove('border-teal-500');
+        return false;
+      }
+      nameInput.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500');
+      nameInput.classList.add('border-teal-500');
+      return true;
+    }
+
+    function validatePhoneField(showPopup = true) {
+      if (!phoneInput) return true;
+      const digits = phoneInput.value.replace(/\D/g, '');
+      if (digits.length !== 10) {
+        if (showPopup) {
+          showToast('Phone Number must be exactly 10 digits of numbers.', 'error');
+        }
+        phoneInput.classList.add('border-rose-500', 'ring-2', 'ring-rose-500');
+        phoneInput.classList.remove('border-teal-500');
+        return false;
+      }
+      phoneInput.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500');
+      phoneInput.classList.add('border-teal-500');
+      return true;
+    }
+
+    function validateEmailField(showPopup = true) {
+      if (!emailInput) return true;
+      const val = emailInput.value.trim();
+      const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+      if (!val || !gmailRegex.test(val)) {
+        if (showPopup) {
+          showToast('Email address must follow format: name@gmail.com', 'error');
+        }
+        emailInput.classList.add('border-rose-500', 'ring-2', 'ring-rose-500');
+        emailInput.classList.remove('border-teal-500');
+        return false;
+      }
+      emailInput.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500');
+      emailInput.classList.add('border-teal-500');
+      return true;
+    }
+
+    function validateAddressField(showPopup = true) {
+      if (!addressInput) return true;
+      const val = addressInput.value.trim();
+      if (!val || val.length < 15) {
+        if (showPopup) {
+          showToast('Complete Street / Property Address must be at least 15 to 20 characters long.', 'error');
+        }
+        addressInput.classList.add('border-rose-500', 'ring-2', 'ring-rose-500');
+        addressInput.classList.remove('border-teal-500');
+        return false;
+      }
+      addressInput.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500');
+      addressInput.classList.add('border-teal-500');
+      return true;
+    }
+
+    // Realtime number blocking on Name field
+    if (nameInput) {
+      nameInput.addEventListener('input', () => {
+        nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
+      });
+      nameInput.addEventListener('blur', () => {
+        if (nameInput.value.trim().length > 0) {
+          const isValid = validateNameField(true);
+          if (isValid && phoneInput && !phoneInput.value.trim()) {
+            phoneInput.focus();
+          }
+        }
+      });
+      nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (validateNameField(true) && phoneInput) {
+            phoneInput.focus();
+          }
+        }
+      });
+    }
+
+    // Realtime letter blocking on Phone field
+    if (phoneInput) {
+      phoneInput.addEventListener('input', () => {
+        phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+      });
+      phoneInput.addEventListener('blur', () => {
+        if (phoneInput.value.trim().length > 0) {
+          const isValid = validatePhoneField(true);
+          if (isValid && emailInput && !emailInput.value.trim()) {
+            emailInput.focus();
+          }
+        }
+      });
+      phoneInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (validatePhoneField(true) && emailInput) {
+            emailInput.focus();
+          }
+        }
+      });
+    }
+
+    if (emailInput) {
+      emailInput.addEventListener('blur', () => {
+        if (emailInput.value.trim().length > 0) {
+          const isValid = validateEmailField(true);
+          if (isValid && addressInput && !addressInput.value.trim()) {
+            addressInput.focus();
+          }
+        }
+      });
+      emailInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (validateEmailField(true) && addressInput) {
+            addressInput.focus();
+          }
+        }
+      });
+    }
+
+    if (addressInput) {
+      addressInput.addEventListener('blur', () => {
+        if (addressInput.value.trim().length > 0) {
+          validateAddressField(true);
+        }
+      });
+    }
+
+    // Step-by-step submission validation (Top-Right Popups)
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('Thank you! Your water hygiene inquiry has been routed to our nearest field supervisor.', 'success');
-      contactForm.reset();
+
+      // Step 1: Validate Name
+      if (!validateNameField(true)) {
+        nameInput && nameInput.focus();
+        return;
+      }
+
+      // Step 2: Validate Phone Number
+      if (!validatePhoneField(true)) {
+        phoneInput && phoneInput.focus();
+        return;
+      }
+
+      // Step 3: Validate Email Address
+      if (!validateEmailField(true)) {
+        emailInput && emailInput.focus();
+        return;
+      }
+
+      // Step: Validate Date if present (Disallow Past / Existing Dates)
+      const dateInp = form.querySelector('input[type="date"]');
+      if (dateInp && dateInp.value) {
+        const todayVal = new Date().toISOString().split('T')[0];
+        if (dateInp.value < todayVal) {
+          showToast('Please select a valid upcoming date. Past dates are not accepted.', 'error');
+          dateInp.focus();
+          return;
+        }
+      }
+
+      // Step 4: Validate Street / Property Address
+      if (!validateAddressField(true)) {
+        addressInput && addressInput.focus();
+        return;
+      }
+
+      // All fields valid: Show Success popup in top-right!
+      showToast(config.successMsg, 'success');
+      form.reset();
+
+      // Reset border styles
+      [nameInput, phoneInput, emailInput, addressInput].forEach(inp => {
+        if (inp) inp.classList.remove('border-teal-500', 'border-rose-500', 'ring-2', 'ring-rose-500');
+      });
     });
   }
+
+  // Initialize booking form step-by-step validation
+  setupStepByStepForm('booking-wizard-form', {
+    nameId: 'booking-name',
+    phoneId: 'booking-phone',
+    emailId: 'booking-email',
+    addressId: 'booking-address',
+    successMsg: 'Booking Visit Confirmed! Our certified technician will arrive at your scheduled slot.'
+  });
+
+  // Initialize contact form step-by-step validation
+  setupStepByStepForm('contact-form', {
+    nameId: 'contact-name',
+    phoneId: 'contact-phone',
+    emailId: 'contact-email',
+    addressId: 'contact-address',
+    successMsg: 'Inquiry Submitted Successfully! Our water hygiene engineer will call you promptly.'
+  });
 
   // Login / Register Form
     // Login / Register Form (Dummy submit: no alerts, no messages, no navigation)

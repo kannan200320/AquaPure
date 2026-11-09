@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -56,7 +63,7 @@
         </a>
 
         <!-- Desktop Navigation Menu -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none">
               <span>Home</span>
@@ -131,21 +138,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -438,57 +445,57 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 text-center flex flex-col justify-between h-full shadow-sm">
-          <div>
+          <div class="flex-1 flex flex-col items-center">
             <img src="assets/images/avatar-4.jpg" alt="Suresh Kumar, M.Tech" class="w-20 h-20 mx-auto rounded-2xl object-cover shadow-md mb-4 shrink-0 border-2 border-cyan-500/40">
-            <div class="min-h-[3.25rem] flex flex-col justify-center mb-3">
-              <h3 class="text-lg font-bold text-black dark:text-white">Suresh Kumar, M.Tech</h3>
-              <div class="text-xs font-bold text-cyan-600 dark:text-cyan-400">Founder & Chief Water Scientist</div>
+            <div class="min-h-[3.75rem] flex flex-col justify-center mb-3 text-center">
+              <h3 class="text-lg font-bold text-black dark:text-white leading-snug">Suresh Kumar, M.Tech</h3>
+              <div class="text-xs font-bold text-cyan-600 dark:text-cyan-400 mt-0.5">Founder &amp; Chief Water Scientist</div>
             </div>
+            <p class="text-xs font-medium text-black dark:text-white leading-relaxed flex-1 flex items-start text-center">
+              Former environmental consultant with 18 years experience in municipal water treatment and advanced filtration system designs.
+            </p>
           </div>
-          <p class="text-xs font-medium text-black dark:text-white leading-relaxed min-h-[4.5rem]">
-            Former environmental consultant with 18 years experience in municipal water treatment and advanced filtration system designs.
-          </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 text-center flex flex-col justify-between h-full shadow-sm">
-          <div>
+          <div class="flex-1 flex flex-col items-center">
             <img src="assets/images/avatar-3.jpg" alt="Dr. Meera Nambiar" class="w-20 h-20 mx-auto rounded-2xl object-cover shadow-md mb-4 shrink-0 border-2 border-teal-500/40">
-            <div class="min-h-[3.25rem] flex flex-col justify-center mb-3">
-              <h3 class="text-lg font-bold text-black dark:text-white">Dr. Meera Nambiar</h3>
-              <div class="text-xs font-bold text-teal-600 dark:text-teal-400">Head of Microbiology & Quality</div>
+            <div class="min-h-[3.75rem] flex flex-col justify-center mb-3 text-center">
+              <h3 class="text-lg font-bold text-black dark:text-white leading-snug">Dr. Meera Nambiar</h3>
+              <div class="text-xs font-bold text-teal-600 dark:text-teal-400 mt-0.5">Head of Microbiology &amp; Quality</div>
             </div>
+            <p class="text-xs font-medium text-black dark:text-white leading-relaxed flex-1 flex items-start text-center">
+              Specialist in biofilm pathogens, coliform eradication, and rapid spectrophotometric water quality diagnostic testing.
+            </p>
           </div>
-          <p class="text-xs font-medium text-black dark:text-white leading-relaxed min-h-[4.5rem]">
-            Specialist in biofilm pathogens, coliform eradication, and rapid spectrophotometric water quality diagnostic testing.
-          </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 text-center flex flex-col justify-between h-full shadow-sm">
-          <div>
+          <div class="flex-1 flex flex-col items-center">
             <img src="assets/images/avatar-2.jpg" alt="Arun Ranganathan" class="w-20 h-20 mx-auto rounded-2xl object-cover shadow-md mb-4 shrink-0 border-2 border-sky-500/40">
-            <div class="min-h-[3.25rem] flex flex-col justify-center mb-3">
-              <h3 class="text-lg font-bold text-black dark:text-white">Arun Ranganathan</h3>
-              <div class="text-xs font-bold text-sky-600 dark:text-sky-400">Operations & Fleet Director</div>
+            <div class="min-h-[3.75rem] flex flex-col justify-center mb-3 text-center">
+              <h3 class="text-lg font-bold text-black dark:text-white leading-snug">Arun Ranganathan</h3>
+              <div class="text-xs font-bold text-sky-600 dark:text-sky-400 mt-0.5">Operations &amp; Fleet Director</div>
             </div>
+            <p class="text-xs font-medium text-black dark:text-white leading-relaxed flex-1 flex items-start text-center">
+              OSHA certified confined-space safety engineer directing our 18 mobile fleet units and certified field technician safety protocols.
+            </p>
           </div>
-          <p class="text-xs font-medium text-black dark:text-white leading-relaxed min-h-[4.5rem]">
-            OSHA certified confined-space safety engineer directing our 18 mobile fleet units and certified field technician safety protocols.
-          </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 text-center flex flex-col justify-between h-full shadow-sm">
-          <div>
+          <div class="flex-1 flex flex-col items-center">
             <img src="assets/images/avatar-5.jpg" alt="Kavita Venkatesh" class="w-20 h-20 mx-auto rounded-2xl object-cover shadow-md mb-4 shrink-0 border-2 border-blue-500/40">
-            <div class="min-h-[3.25rem] flex flex-col justify-center mb-3">
-              <h3 class="text-lg font-bold text-black dark:text-white">Kavita Venkatesh</h3>
-              <div class="text-xs font-bold text-cyan-600 dark:text-cyan-400">Customer Success & AMC Head</div>
+            <div class="min-h-[3.75rem] flex flex-col justify-center mb-3 text-center">
+              <h3 class="text-lg font-bold text-black dark:text-white leading-snug">Kavita Venkatesh</h3>
+              <div class="text-xs font-bold text-cyan-600 dark:text-cyan-400 mt-0.5">Customer Success &amp; AMC Head</div>
             </div>
+            <p class="text-xs font-medium text-black dark:text-white leading-relaxed flex-1 flex items-start text-center">
+              Directing 12,000+ active homeowner AMC subscriptions and managing residential housing society service contracts.
+            </p>
           </div>
-          <p class="text-xs font-medium text-black dark:text-white leading-relaxed min-h-[4.5rem]">
-            Directing 12,000+ active homeowner AMC subscriptions and managing residential housing society service contracts.
-          </p>
         </div>
       </div>
     </div>

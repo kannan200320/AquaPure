@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -58,7 +65,7 @@
         </a>
 
         <!-- Desktop Navigation Menu (whitespace-nowrap, no wrapping, dashboard as text after contact us) -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 font-bold focus:outline-none whitespace-nowrap">
               <span>Home</span>
@@ -133,21 +140,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -1013,15 +1020,15 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white mt-1">Trusted By 48,000+ Families Across The Nation</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div class="flex-1 flex flex-col">
+            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
               "We were shocked when the AquaPure team showed us photos inside our rooftop tank. There was 4 inches of black silt at the bottom! Within an hour, they scoured it spotlessly clean and UV treated it. The tap water smells sweet and pure again."
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
             <img src="assets/images/avatar-1.jpg" alt="Rajesh Khanna" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500/50 shadow-sm">
             <div>
               <div class="font-bold text-sm text-black dark:text-white">Rajesh Khanna</div>
@@ -1030,14 +1037,14 @@
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div class="flex-1 flex flex-col">
+            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
               "With two toddler twins at home, clean bathing water is non-negotiable. AquaPure’s AMC plan has been a blessing. They automatically send reminders every 4 months and their technicians are extremely courteous and punctual."
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
             <img src="assets/images/avatar-3.jpg" alt="Pooja Menon" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-teal-500/50 shadow-sm">
             <div>
               <div class="font-bold text-sm text-black dark:text-white">Pooja Menon</div>
@@ -1046,14 +1053,14 @@
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
+        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
+          <div class="flex-1 flex flex-col">
+            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
               "Our 120-flat apartment society signed up for the AquaPure Commercial AMC. They completed our massive 50,000L underground sump and 8 rooftop tanks in 48 hours with minimal water disruption. Outstanding professional service."
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
             <img src="assets/images/avatar-2.jpg" alt="Anil Sharma" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-sky-500/50 shadow-sm">
             <div>
               <div class="font-bold text-sm text-black dark:text-white">Anil Sharma</div>
@@ -1174,7 +1181,7 @@
             <span>How frequently should overhead water tanks and sumps be cleaned?</span>
             <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200"></i>
           </button>
-          <div class="faq-accordion-content p-5 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
+          <div class="faq-accordion-content hidden p-5 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
             According to WHO and municipal health departments, residential overhead tanks must be deep cleaned and sterilized at least once every 90 to 120 days. Underground sumps that receive borewell or tanker water should be serviced every 3 to 4 months due to heavy sediment runoff.
           </div>
         </div>

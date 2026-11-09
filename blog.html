@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -58,7 +65,7 @@
         </a>
 
         <!-- Desktop Navigation Menu -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none whitespace-nowrap">
               <span>Home</span>
@@ -133,21 +140,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -804,63 +811,71 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <!-- Card 1: Quarter 1 -->
           <div class="p-6 rounded-3xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex flex-col justify-between h-full">
-            <div>
-              <div class="min-h-[4rem] flex flex-col justify-start">
-                <div class="text-xs font-black uppercase text-cyan-600 dark:text-cyan-400">Quarter 1 • Jan - Mar</div>
-                <h3 class="text-lg font-black text-black dark:text-white mt-1">Post-Winter Descaling</h3>
+            <div class="flex-1 flex flex-col">
+              <div class="min-h-[4.75rem] lg:min-h-[5.25rem] flex flex-col justify-start shrink-0">
+                <div class="text-xs font-black uppercase tracking-wider text-cyan-600 dark:text-cyan-400">QUARTER 1 &bull; JAN - MAR</div>
+                <h3 class="text-lg font-black text-black dark:text-white mt-1 leading-snug">Post-Winter Descaling</h3>
               </div>
-              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-2 flex items-start">
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[6.5rem] lg:min-h-[6.75rem] mt-2 flex items-start flex-1">
                 Flush out mineral carbonates accumulated during dry cold months. Inspect float valves and pressure switches before summer peak demand.
               </p>
             </div>
-            <div class="mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-center gap-1.5 min-h-[2rem]">
-              <i class="fas fa-check text-cyan-600"></i> Recommended: Pipeline De-scale
+            <div class="h-[3.75rem] shrink-0 mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-start gap-1.5 leading-snug">
+              <i class="fas fa-check mt-0.5 shrink-0 text-cyan-600"></i>
+              <span class="flex-1">Recommended: Pipeline De-scale</span>
             </div>
           </div>
 
+          <!-- Card 2: Quarter 2 -->
           <div class="p-6 rounded-3xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex flex-col justify-between h-full">
-            <div>
-              <div class="min-h-[4rem] flex flex-col justify-start">
-                <div class="text-xs font-black uppercase text-amber-500">Quarter 2 • Apr - Jun</div>
-                <h3 class="text-lg font-black text-black dark:text-white mt-1">Peak Summer Algae Control</h3>
+            <div class="flex-1 flex flex-col">
+              <div class="min-h-[4.75rem] lg:min-h-[5.25rem] flex flex-col justify-start shrink-0">
+                <div class="text-xs font-black uppercase tracking-wider text-amber-500">QUARTER 2 &bull; APR - JUN</div>
+                <h3 class="text-lg font-black text-black dark:text-white mt-1 leading-snug">Peak Summer Algae Control</h3>
               </div>
-              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-2 flex items-start">
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[6.5rem] lg:min-h-[6.75rem] mt-2 flex items-start flex-1">
                 High rooftop temperatures induce algal blooms. Perform 254nm UV-C bio-sterilization and ensure airtight cover seals against insect breeding.
               </p>
             </div>
-            <div class="mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-center gap-1.5 min-h-[2rem]">
-              <i class="fas fa-check text-amber-500"></i> Recommended: UV Deep Sanitization
+            <div class="h-[3.75rem] shrink-0 mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-start gap-1.5 leading-snug">
+              <i class="fas fa-check mt-0.5 shrink-0 text-amber-500"></i>
+              <span class="flex-1">Recommended: UV Deep Sanitization</span>
             </div>
           </div>
 
+          <!-- Card 3: Quarter 3 -->
           <div class="p-6 rounded-3xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex flex-col justify-between h-full">
-            <div>
-              <div class="min-h-[4rem] flex flex-col justify-start">
-                <div class="text-xs font-black uppercase text-rose-500">Quarter 3 • Jul - Sep</div>
-                <h3 class="text-lg font-black text-black dark:text-white mt-1">Monsoon Turbidity Defense</h3>
+            <div class="flex-1 flex flex-col">
+              <div class="min-h-[4.75rem] lg:min-h-[5.25rem] flex flex-col justify-start shrink-0">
+                <div class="text-xs font-black uppercase tracking-wider text-rose-500">QUARTER 3 &bull; JUL - SEP</div>
+                <h3 class="text-lg font-black text-black dark:text-white mt-1 leading-snug">Monsoon Turbidity Defense</h3>
               </div>
-              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-2 flex items-start">
-                Municipal supply muddies with high suspended solids (NTU > 15). Rapid sludge buildup in underground sumps requires sludge extraction pumps.
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[6.5rem] lg:min-h-[6.75rem] mt-2 flex items-start flex-1">
+                Municipal supply muddies with high suspended solids (NTU &gt; 15). Rapid sludge buildup in underground sumps requires sludge extraction pumps.
               </p>
             </div>
-            <div class="mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-center gap-1.5 min-h-[2rem]">
-              <i class="fas fa-check text-rose-500"></i> Recommended: Sump Sludge Extraction
+            <div class="h-[3.75rem] shrink-0 mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-start gap-1.5 leading-snug">
+              <i class="fas fa-check mt-0.5 shrink-0 text-rose-500"></i>
+              <span class="flex-1">Recommended: Sump Sludge Extraction</span>
             </div>
           </div>
 
+          <!-- Card 4: Quarter 4 -->
           <div class="p-6 rounded-3xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-sm flex flex-col justify-between h-full">
-            <div>
-              <div class="min-h-[4rem] flex flex-col justify-start">
-                <div class="text-xs font-black uppercase text-teal-600 dark:text-teal-400">Quarter 4 • Oct - Dec</div>
-                <h3 class="text-lg font-black text-black dark:text-white mt-1">Pre-Festival Deep Sanitization</h3>
+            <div class="flex-1 flex flex-col">
+              <div class="min-h-[4.75rem] lg:min-h-[5.25rem] flex flex-col justify-start shrink-0">
+                <div class="text-xs font-black uppercase tracking-wider text-teal-600 dark:text-teal-400">QUARTER 4 &bull; OCT - DEC</div>
+                <h3 class="text-lg font-black text-black dark:text-white mt-1 leading-snug">Pre-Festival Deep Sanitization</h3>
               </div>
-              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-2 flex items-start">
+              <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[6.5rem] lg:min-h-[6.75rem] mt-2 flex items-start flex-1">
                 Complete full-home dual tank deep clean before holiday guests arrive. Full lab water purity testing for TDS, pH, and coliform counts.
               </p>
             </div>
-            <div class="mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-center gap-1.5 min-h-[2rem]">
-              <i class="fas fa-check text-teal-600"></i> Recommended: Combo Tank + Sump Package
+            <div class="h-[3.75rem] shrink-0 mt-auto pt-3 border-t border-sky-200 dark:border-sky-800/60 text-xs font-black text-black dark:text-white flex items-start gap-1.5 leading-snug">
+              <i class="fas fa-check mt-0.5 shrink-0 text-teal-600"></i>
+              <span class="flex-1">Recommended: Combo Tank + Sump Package</span>
             </div>
           </div>
         </div>
@@ -895,17 +910,18 @@
               6 min read
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-1 space-y-4">
-            <div class="space-y-3">
-              
-              <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors">
-                <a href="blog-details-lab.html">Understanding TDS, pH, and Turbidity: The Homeowner's Guide to Water Lab Reports</a>
-              </h3>
-              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="min-h-[6.5rem] lg:min-h-[7rem] flex flex-col justify-start">
+                <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors leading-snug">
+                  <a href="blog-details-lab.html">Understanding TDS, pH, and Turbidity: The Homeowner's Guide to Water Lab Reports</a>
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed min-h-[5rem] mt-2 flex items-start flex-1">
                 Learn how to read digital water purity metrics, distinguish dissolved mineral solids from particulate sediment, and spot coliform alarms.
               </p>
             </div>
-            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between">
+            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between mt-auto shrink-0">
               <span class="text-xs font-black text-black dark:text-white">By Dr. Radhika Sharma</span>
               <a href="blog-details-lab.html" class="text-xs font-black text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">Read Article <i class="fas fa-arrow-right text-[10px]"></i></a>
             </div>
@@ -923,17 +939,18 @@
               5 min read
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-1 space-y-4">
-            <div class="space-y-3">
-              
-              <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors">
-                <a href="blog-details-bleach.html">Why Pouring Bleach or Phenyl into Your Tank Is Illegal and Dangerously Toxic</a>
-              </h3>
-              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="min-h-[6.5rem] lg:min-h-[7rem] flex flex-col justify-start">
+                <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors leading-snug">
+                  <a href="blog-details-bleach.html">Why Pouring Bleach or Phenyl into Your Tank Is Illegal and Dangerously Toxic</a>
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed min-h-[5rem] mt-2 flex items-start flex-1">
                 Uncertified local cleaners frequently dump caustic chlorine bleach that creates carcinogenic trihalomethanes (THMs) and corrodes plumbing welds.
               </p>
             </div>
-            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between">
+            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between mt-auto shrink-0">
               <span class="text-xs font-black text-black dark:text-white">By Arun Ranganathan</span>
               <a href="blog-details-bleach.html" class="text-xs font-black text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">Read Article <i class="fas fa-arrow-right text-[10px]"></i></a>
             </div>
@@ -951,17 +968,18 @@
               7 min read
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-1 space-y-4">
-            <div class="space-y-3">
-              
-              <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors">
-                <a href="blog-details-osha.html">OSHA Confined Space Protocols: Why Our Crew Uses 24V Air Blowers & Gas Monitors</a>
-              </h3>
-              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="min-h-[6.5rem] lg:min-h-[7rem] flex flex-col justify-start">
+                <h3 class="text-xl font-black text-black dark:text-white hover:text-cyan-600 transition-colors leading-snug">
+                  <a href="blog-details-osha.html">OSHA Confined Space Protocols: Why Our Crew Uses 24V Air Blowers & Gas Monitors</a>
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed min-h-[5rem] mt-2 flex items-start flex-1">
                 Underground sumps trap toxic methane and hydrogen sulfide gases. Discover how AquaPure safeguards technicians with certified atmospheric blowers.
               </p>
             </div>
-            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between">
+            <div class="pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center justify-between mt-auto shrink-0">
               <span class="text-xs font-black text-black dark:text-white">By Marcus Vance</span>
               <a href="blog-details-osha.html" class="text-xs font-black text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">Read Article <i class="fas fa-arrow-right text-[10px]"></i></a>
             </div>
@@ -1105,31 +1123,43 @@
         </div>
 
         <div class="space-y-4">
-          <div class="p-6 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-            <h3 class="text-base font-black text-black dark:text-white flex items-center gap-2">
-              <i class="fas fa-circle-question text-cyan-600"></i> How often should a domestic overhead tank be cleaned?
-            </h3>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+            <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+              <span class="flex items-center gap-3">
+                <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+                <span>How often should a domestic overhead tank be cleaned?</span>
+              </span>
+              <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
+            </button>
+            <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
               Municipal public health guidelines and WHO standards advise full mechanized sanitization every 90 days (quarterly) for municipal supplies, and every 60 to 90 days if using deep borewell water with high dissolved solids and iron content.
-            </p>
+            </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-            <h3 class="text-base font-black text-black dark:text-white flex items-center gap-2">
-              <i class="fas fa-circle-question text-cyan-600"></i> Do I need to empty the entire tank before your team arrives?
-            </h3>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+            <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+              <span class="flex items-center gap-3">
+                <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+                <span>Do I need to empty the entire tank before your team arrives?</span>
+              </span>
+              <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
+            </button>
+            <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
               No. We encourage homeowners to consume normal water levels down to 20-25% before the service. Our specialized submersible high-capacity pumps transfer usable water or swiftly clear sludge without flooding your terrace.
-            </p>
+            </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-            <h3 class="text-base font-black text-black dark:text-white flex items-center gap-2">
-              <i class="fas fa-circle-question text-cyan-600"></i> How soon after cleaning can we use the water for cooking and bathing?
-            </h3>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed">
+          <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+            <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+              <span class="flex items-center gap-3">
+                <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+                <span>How soon after cleaning can we use the water for cooking and bathing?</span>
+              </span>
+              <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
+            </button>
+            <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
               Immediately. Because our 7-Stage protocol uses mechanized rotary jetting, industrial sludge vacuuming, and 254nm ultraviolet germicidal irradiation (zero harsh chemicals), the water refilled into your tank is instantly ready for domestic use with no chlorine smell.
-            </p>
+            </div>
           </div>
         </div>
       </div>

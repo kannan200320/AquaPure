@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -58,7 +65,7 @@
         </a>
 
         <!-- Desktop Navigation Menu -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
           <!-- Home Dropdown -->
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none whitespace-nowrap">
@@ -135,21 +142,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -314,7 +321,7 @@
           </p>
         </div>
 
-        <form id="booking-wizard-form" class="space-y-8">
+        <form id="booking-wizard-form" class="space-y-8" novalidate>
           
           <!-- Step 1: Select Property Type -->
           <div class="space-y-3">
@@ -424,11 +431,15 @@
               <h3 class="text-base sm:text-lg font-black text-black dark:text-white">Homeowner Contact &amp; Service Address</h3>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" required placeholder="Full Name (e.g. Vikram Sharma)" class="p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white">
-              <input type="tel" required placeholder="Mobile Number (e.g. +1 408-555-0192)" class="p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white">
+              <div>
+                <input type="text" id="booking-name" name="fullname" required minlength="2" placeholder="Full Name (e.g. Vikram Sharma)" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" title="Full Name must be at least 2 characters and contain no numbers" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
+              </div>
+              <div>
+                <input type="tel" id="booking-phone" name="phone" required minlength="10" maxlength="10" placeholder="Mobile Number (10 digits, e.g. 9876543210)" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10)" title="Phone number must be exactly 10 digits" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
+              </div>
             </div>
-            <input type="email" required placeholder="Email Address for Digital Water Certificate (e.g. vikram.sharma@gmail.com)" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white">
-            <input type="text" required placeholder="Complete Street Address (e.g. 42 Blossom Valley Way, Sunnyvale, CA 94087)" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white">
+            <input type="email" id="booking-email" name="email" required placeholder="Email Address (e.g. name@gmail.com)" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Email address must follow format: name@gmail.com" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
+            <input type="text" id="booking-address" name="address" required minlength="15" placeholder="Complete Street Address (at least 15 to 20 characters, e.g. 42 Blossom Valley Way, Sunnyvale, CA 94087)" title="Complete Street Address must be at least 15 to 20 characters long" class="w-full p-3 text-xs font-semibold rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#07131f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
           </div>
 
           <!-- Submit Bar -->
@@ -589,49 +600,49 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         
         <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-md flex flex-col justify-start h-full">
-          <div class="min-h-[3.25rem] flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-lg shrink-0">
+          <div class="min-h-[4.25rem] sm:min-h-[4.5rem] flex items-start gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-lg shrink-0 mt-0.5">
               <i class="fas fa-water"></i>
             </div>
-            <h3 class="text-base font-black text-black dark:text-white leading-tight">150-Bar Rotary Hydro-Jetting</h3>
+            <h3 class="text-base font-black text-black dark:text-white leading-snug">150-Bar Rotary Hydro-Jetting</h3>
           </div>
-          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-3 flex items-start">
+          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed flex-1 mt-3 flex items-start">
             Our rotary high-pressure jets blast micro-droplets at 150 times atmospheric pressure to strip stubborn calcinated lime scale, green algae roots, and biological slime from internal corners without scratching polymer walls.
           </p>
         </div>
 
         <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-md flex flex-col justify-start h-full">
-          <div class="min-h-[3.25rem] flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-lg shrink-0">
+          <div class="min-h-[4.25rem] sm:min-h-[4.5rem] flex items-start gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-lg shrink-0 mt-0.5">
               <i class="fas fa-wind"></i>
             </div>
-            <h3 class="text-base font-black text-black dark:text-white leading-tight">Industrial Sludge Vacuum Slurry Extraction</h3>
+            <h3 class="text-base font-black text-black dark:text-white leading-snug">Industrial Sludge Vacuum Slurry Extraction</h3>
           </div>
-          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-3 flex items-start">
+          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed flex-1 mt-3 flex items-start">
             Heavy-duty rotary sludge extractors pump out dense bottom municipal mud, fine construction sand, and dead biological matter directly into sealed disposal drums, leaving the floor bone-dry and spotless.
           </p>
         </div>
 
         <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-md flex flex-col justify-start h-full">
-          <div class="min-h-[3.25rem] flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-lg shrink-0">
+          <div class="min-h-[4.25rem] sm:min-h-[4.5rem] flex items-start gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-lg shrink-0 mt-0.5">
               <i class="fas fa-spray-can"></i>
             </div>
-            <h3 class="text-base font-black text-black dark:text-white leading-tight">Food-Grade Bio-Organic Anti-Bacterial Fogging</h3>
+            <h3 class="text-base font-black text-black dark:text-white leading-snug">Food-Grade Bio-Organic Anti-Bacterial Fogging</h3>
           </div>
-          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-3 flex items-start">
+          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed flex-1 mt-3 flex items-start">
             We spray an FDA-approved, non-toxic bio-organic sanitizing mist across all internal surfaces. It completely eliminates bacteria, viruses, and amoebic cysts with zero chemical odor, zero harsh chlorine residue, and zero bleaching taste.
           </p>
         </div>
 
         <div class="p-6 rounded-3xl bg-white dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 shadow-md flex flex-col justify-start h-full">
-          <div class="min-h-[3.25rem] flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-lg shrink-0">
+          <div class="min-h-[4.25rem] sm:min-h-[4.5rem] flex items-start gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-lg shrink-0 mt-0.5">
               <i class="fas fa-lightbulb"></i>
             </div>
-            <h3 class="text-base font-black text-black dark:text-white leading-tight">254nm Germicidal UV-C Photonic Sterilization</h3>
+            <h3 class="text-base font-black text-black dark:text-white leading-snug">254nm Germicidal UV-C Photonic Sterilization</h3>
           </div>
-          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed min-h-[5.5rem] mt-3 flex items-start">
+          <p class="text-xs font-semibold text-black dark:text-white leading-relaxed flex-1 mt-3 flex items-start">
             A high-intensity germicidal UV-C radiator is suspended inside the sealed reservoir for 15 minutes to irradiate airborne bacterial spores, fungal micro-particles, and viral pathogens that escape conventional physical wiping.
           </p>
         </div>
@@ -813,43 +824,55 @@
         <h2 class="text-2xl sm:text-3xl font-black text-black dark:text-white">Booking Frequently Asked Questions</h2>
       </div>
 
-      <div class="space-y-3">
-        <div class="faq-item p-5 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <button class="faq-btn w-full flex items-center justify-between text-left font-bold text-sm sm:text-base text-black dark:text-white focus:outline-none">
-            <span>Can we use the water immediately after your crew finishes?</span>
-            <i class="faq-arrow fas fa-chevron-down text-xs transition-transform"></i>
+      <div class="faq-group space-y-4">
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>Can we use the water immediately after your crew finishes?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
           </button>
-          <div class="faq-answer text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed pt-2 border-t border-sky-200 dark:border-sky-800">
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-200 dark:border-sky-800/60">
             Yes, absolutely. Because AquaPure strictly avoids hazardous chlorine bleaching powders and toxic detergents, there is zero toxic chemical residue. Once our crew completes the UV-C sterilization and wipes the interior dry, you can turn on your main supply inlet and start using pure, safe water immediately with zero bad odor or chemical taste.
           </div>
         </div>
 
-        <div class="faq-item p-5 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <button class="faq-btn w-full flex items-center justify-between text-left font-bold text-sm sm:text-base text-black dark:text-white focus:outline-none">
-            <span>How long does a complete overhead tank and sump cleaning take?</span>
-            <i class="faq-arrow fas fa-chevron-down text-xs transition-transform"></i>
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>How long does a complete overhead tank and sump cleaning take?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
           </button>
-          <div class="faq-answer text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed pt-2 border-t border-sky-200 dark:border-sky-800">
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-200 dark:border-sky-800/60">
             A single overhead rooftop tank (1,000L - 1,500L) takes approximately 60 to 75 minutes. A dual reservoir Combo package (1 overhead tank + 1 underground sump) takes roughly 90 to 120 minutes. Our high-efficiency submersible pumps and 150-bar rotary pressure equipment ensure thorough, rapid execution without disrupting your daily routine.
           </div>
         </div>
 
-        <div class="faq-item p-5 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <button class="faq-btn w-full flex items-center justify-between text-left font-bold text-sm sm:text-base text-black dark:text-white focus:outline-none">
-            <span>Do you require an upfront payment or deposit when reserving online?</span>
-            <i class="faq-arrow fas fa-chevron-down text-xs transition-transform"></i>
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>Do you require an upfront payment or deposit when reserving online?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
           </button>
-          <div class="faq-answer text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed pt-2 border-t border-sky-200 dark:border-sky-800">
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-200 dark:border-sky-800/60">
             No upfront payment is ever required. You only pay after our supervisor conducts the 12-point physical inspection, tests the water purity on digital meters, and displays the photographic before-and-after proof. You can pay via credit card, Apple Pay, Google Pay, or bank transfer directly from your Customer Portal.
           </div>
         </div>
 
-        <div class="faq-item p-5 rounded-2xl bg-[#f0f9ff] dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <button class="faq-btn w-full flex items-center justify-between text-left font-bold text-sm sm:text-base text-black dark:text-white focus:outline-none">
-            <span>What happens if it rains heavily during our scheduled rooftop slot?</span>
-            <i class="faq-arrow fas fa-chevron-down text-xs transition-transform"></i>
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-[#f0f9ff] dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-100/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>What happens if it rains heavily during our scheduled rooftop slot?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
           </button>
-          <div class="faq-answer text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed pt-2 border-t border-sky-200 dark:border-sky-800">
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-200 dark:border-sky-800/60">
             Technician safety on wet rooftops with high-voltage equipment is vital. If severe rainfall or lightning occurs during your slot, our dispatch supervisor will immediately notify you and reschedule your visit to the next dry morning window of your choice with zero penalty or price change.
           </div>
         </div>

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">

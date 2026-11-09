@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 <head>
+  <script>
+    if (localStorage.getItem('aquapure-theme') === 'dark' || (!localStorage.getItem('aquapure-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <meta charset="UTF-8">
   <!-- Favicon (AquaPure Water Droplet Brand Logo) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -56,7 +63,7 @@
         </a>
 
         <!-- Desktop Navigation Menu -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none">
               <span>Home</span>
@@ -131,21 +138,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden sm:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -668,25 +675,31 @@
         <h2 class="text-2xl sm:text-4xl font-black text-black dark:text-white">Frequently Asked Technical Questions</h2>
       </div>
 
-      <div class="space-y-4">
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <h4 class="font-bold text-base text-black dark:text-white flex items-center gap-2">
-            <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400"></i>
-            How does UV radiation kill bacteria inside a dry tank?
-          </h4>
-          <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed pl-6">
+      <div class="faq-group space-y-4">
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-50/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>How does UV radiation kill bacteria inside a dry tank?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
+          </button>
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
             After wet vacuuming, when tank walls are clean and dry, ultraviolet photons penetrate cellular membranes directly without water interference. The 253.7nm wavelength breaks thymine dimers in bacterial DNA, making reproduction impossible.
-          </p>
+          </div>
         </div>
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 space-y-2">
-          <h4 class="font-bold text-base text-black dark:text-white flex items-center gap-2">
-            <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400"></i>
-            Does your team need electricity and water from our home?
-          </h4>
-          <p class="text-xs sm:text-sm font-medium text-black dark:text-white leading-relaxed pl-6">
+        <div class="rounded-2xl border border-sky-200 dark:border-sky-800 bg-white dark:bg-[#0c1e33] overflow-hidden shadow-sm transition-colors">
+          <button type="button" class="faq-accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-base text-black dark:text-white focus:outline-none hover:bg-sky-50/50 dark:hover:bg-[#0f243c] transition-colors">
+            <span class="flex items-center gap-3">
+              <i class="fas fa-circle-question text-cyan-600 dark:text-cyan-400 text-lg shrink-0"></i>
+              <span>Does your team need electricity and water from our home?</span>
+            </span>
+            <i class="faq-icon fas fa-chevron-down text-cyan-600 dark:text-cyan-400 text-sm transition-transform duration-200 shrink-0 ml-3"></i>
+          </button>
+          <div class="faq-accordion-content hidden p-5 sm:p-6 pt-0 text-xs sm:text-sm font-semibold text-black dark:text-white leading-relaxed border-t border-sky-100 dark:border-sky-800/60">
             Our response vans carry 50-meter heavy-gauge industrial power extension cables. We plug into a standard 15A wall socket, or deploy our quiet onboard inverter generator if power is unavailable at your property.
-          </p>
+          </div>
         </div>
       </div>
     </div>
