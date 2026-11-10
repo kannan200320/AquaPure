@@ -48,7 +48,7 @@
 
   <!-- Header Navigation -->
   <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#07131f]/95 backdrop-blur-md border-b border-sky-200 dark:border-sky-900 shadow-sm transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-5 xl:px-8">
       <div class="flex items-center justify-between h-20">
         
         <!-- Logo -->
@@ -63,7 +63,7 @@
         </a>
 
         <!-- Desktop Navigation Menu -->
-        <nav class="hidden xl:flex items-center gap-7 text-sm font-semibold whitespace-nowrap">
+        <nav class="hidden lg:flex items-center gap-4 xl:gap-7 text-xs lg:text-[13px] xl:text-sm font-semibold whitespace-nowrap">
           <div class="relative nav-dropdown group py-4">
             <button class="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold focus:outline-none">
               <span>Home</span>
@@ -138,21 +138,21 @@
 
                 <!-- Right Side Utility Controls -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <button class="theme-toggle hidden xl:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
+          <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white items-center justify-center transition-colors" title="Toggle Light / Dark Mode">
             <i class="theme-toggle-icon fas fa-moon text-sm"></i>
           </button>
 
-          <button class="rtl-toggle hidden xl:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
+          <button class="rtl-toggle hidden lg:flex h-9 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-black dark:text-white font-bold text-xs items-center gap-1.5 transition-colors" title="Toggle RTL / LTR">
             <i class="fas fa-arrow-right-arrow-left text-xs"></i>
             <span class="rtl-toggle-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden xl:inline-flex items-center gap-2 transition-all shadow-sm">
+          <a href="login-register.html" class="whitespace-nowrap h-9 px-3.5 sm:px-4 rounded-xl border border-sky-300 dark:border-sky-700 bg-white dark:bg-[#0c1e33] hover:bg-sky-50 dark:hover:bg-sky-900 text-black dark:text-white font-bold text-xs sm:text-sm hidden lg:inline-flex items-center gap-2 transition-all shadow-sm">
             <i class="fas fa-circle-user text-cyan-600 dark:text-cyan-400 text-sm"></i>
             <span>Sign In</span>
           </a>
 
-          <button id="mobile-menu-btn" class="xl:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
+          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-2xl bg-sky-50 hover:bg-sky-100 dark:bg-[#0c1e33] dark:hover:bg-sky-950 border border-sky-200 dark:border-sky-800 text-black dark:text-white flex items-center justify-center transition-colors shadow-sm" aria-label="Open Navigation Menu">
             <i id="mobile-menu-icon" class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -1098,9 +1098,12 @@
               "We found muddy water in our taps on Sunday morning. I called the AquaPure hotline and an engineer dispatched a van within 90 minutes. Their UV sanitization gave our family total peace of mind."
             </p>
           </div>
-          <div class="pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <div class="font-bold text-sm text-black dark:text-white">David K.</div>
-            <div class="text-xs text-black dark:text-white">Sunnyvale Homeowner</div>
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
+            <img src="assets/images/avatar-1.jpg" alt="David K." class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">David K.</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Sunnyvale Homeowner</div>
+            </div>
           </div>
         </div>
 
@@ -1113,9 +1116,12 @@
               "Booking through their customer dashboard was effortless. The team arrived on time, took full before/after videos, and left our underground sump looking immaculate without wasting drinking water."
             </p>
           </div>
-          <div class="pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <div class="font-bold text-sm text-black dark:text-white">Priya N.</div>
-            <div class="text-xs text-black dark:text-white">RWA Committee President</div>
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
+            <img src="assets/images/avatar-3.jpg" alt="Priya N." class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-teal-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">Priya N.</div>
+              <div class="text-xs font-semibold text-black dark:text-white">RWA Committee President</div>
+            </div>
           </div>
         </div>
 
@@ -1128,9 +1134,12 @@
               "The customer service was stellar. They called me 15 minutes before arrival, explained every step of their 7-stage process, and provided a certified lab test confirming zero bacterial growth."
             </p>
           </div>
-          <div class="pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <div class="font-bold text-sm text-black dark:text-white">Marcus T.</div>
-            <div class="text-xs text-black dark:text-white">Mountain View Villa Owner</div>
+          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
+            <img src="assets/images/avatar-2.jpg" alt="Marcus T." class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-sky-500/50 shadow-sm">
+            <div>
+              <div class="font-bold text-sm text-black dark:text-white">Marcus T.</div>
+              <div class="text-xs font-semibold text-black dark:text-white">Mountain View Villa Owner</div>
+            </div>
           </div>
         </div>
       </div>
