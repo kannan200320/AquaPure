@@ -1,32 +1,57 @@
-import os
 import glob
-import re
+from html.parser import HTMLParser
 
-html_files = glob.glob("*.html")
-print(f"Checking {len(html_files)} HTML files...")
+void_elements = {
+    'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+    'link', 'meta', 'param', 'source', 'track', 'wbr'
+}
 
-errors = 0
-for filepath in html_files:
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
+class TagValidator(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.stack = []
+        self.errors = []
 
-    # Check basic structure
-    if "<!DOCTYPE html>" not in content:
-        print(f"Error: Missing DOCTYPE in {filepath}")
-        errors += 1
-    if "</html>" not in content:
-        print(f"Error: Missing </html> in {filepath}")
-        errors += 1
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() not in void_elements:
+            self.stack.append(tag.lower())
 
-    # Check unclosed tags for key containers
-    for tag in ['nav', 'header', 'footer', 'main', 'section']:
-        opens = len(re.findall(rf'<{tag}\b', content, re.IGNORECASE))
-        closes = len(re.findall(rf'</{tag}>', content, re.IGNORECASE))
-        if opens != closes:
-            print(f"Warning: Tag mismatch in {filepath} for <{tag}>: {opens} opens vs {closes} closes")
-            errors += 1
+    def handle_endtag(self, tag):
+        tag_lower = tag.lower()
+        if tag_lower in void_elements:
+            return
+        if not self.stack:
+            self.errors.append(f"Unexpected closing tag </{tag}>")
+            return
+        if self.stack[-1] == tag_lower:
+            self.stack.pop()
+        else:
+            # Check if tag is in stack
+            if tag_lower in self.stack:
+                while self.stack and self.stack[-1] != tag_lower:
+                    unclosed = self.stack.pop()
+                    self.errors.append(f"Unclosed tag <{unclosed}> before </{tag}>")
+                if self.stack:
+                    self.stack.pop()
+            else:
+                self.errors.append(f"Mismatched closing tag </{tag}>, expected </{self.stack[-1]}>")
 
-if errors == 0:
-    print(f"ALL {len(html_files)} HTML FILES ARE VALID WITH ZERO TAG MISMATCHES!")
+files = sorted(glob.glob('*.html'))
+total_errors = 0
+for f in files:
+    validator = TagValidator()
+    with open(f, 'r', encoding='utf-8') as fp:
+        content = fp.read()
+    validator.feed(content)
+    if validator.errors or validator.stack:
+        print(f"=== {f} ERRORS ===")
+        for e in validator.errors[:5]:
+            print("  ", e)
+        if validator.stack:
+            print("   Unclosed at EOF:", validator.stack)
+        total_errors += len(validator.errors) + len(validator.stack)
+
+if total_errors == 0:
+    print(f"ALL {len(files)} HTML FILES ARE 100% VALID! NO MISMATCHED TAGS.")
 else:
-    print(f"Found {errors} errors across files.")
+    print(f"Total issues: {total_errors}")

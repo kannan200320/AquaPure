@@ -85,18 +85,18 @@ html:not(.dark) {
   color: #000000;
 }
 
-html:not(.dark) p,
-html:not(.dark) span:not(.badge-colored):not(.text-cyan-600):not(.text-teal-600):not(.text-sky-600),
+html:not(.dark) p:not(.text-white):not([class*="text-white"]):not(.article-image-caption-container *):not(.image-overlay-text *),
+html:not(.dark) span:not(.badge-colored):not(.text-cyan-600):not(.text-teal-600):not(.text-sky-600):not(.text-white):not([class*="text-white"]):not(.article-image-caption-container *):not(.image-overlay-text *),
 html:not(.dark) label,
-html:not(.dark) li,
+html:not(.dark) li:not(.text-white):not([class*="text-white"]),
 html:not(.dark) dt,
 html:not(.dark) dd,
-html:not(.dark) h1,
-html:not(.dark) h2,
-html:not(.dark) h3,
-html:not(.dark) h4,
-html:not(.dark) h5,
-html:not(.dark) h6 {
+html:not(.dark) h1:not(.text-white):not([class*="text-white"]),
+html:not(.dark) h2:not(.text-white):not([class*="text-white"]),
+html:not(.dark) h3:not(.text-white):not([class*="text-white"]),
+html:not(.dark) h4:not(.text-white):not([class*="text-white"]),
+html:not(.dark) h5:not(.text-white):not([class*="text-white"]),
+html:not(.dark) h6:not(.text-white):not([class*="text-white"]) {
   color: #000000;
 }
 

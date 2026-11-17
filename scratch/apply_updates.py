@@ -1,142 +1,77 @@
+import glob
 import re
 
-# ==============================================================================
-# Helper to replace a unique block in a file
-# ==============================================================================
-def replace_in_file(filepath, old_str, new_str):
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    if old_str not in content:
-        print(f"FAILED to find target in {filepath}")
-        return False
-    content = content.replace(old_str, new_str, 1)
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
-    print(f"Successfully updated {filepath}")
-    return True
+# 1. Update RTL toggle buttons
+html_files = sorted(glob.glob('*.html'))
+rtl_updated = []
 
-# ------------------------------------------------------------------------------
-# 1. index.html - Testimonials (Image 1) & FAQ 1st question hidden
-# ------------------------------------------------------------------------------
-def update_index():
-    with open('index.html', 'r', encoding='utf-8') as f:
+for fname in html_files:
+    with open(fname, 'r', encoding='utf-8') as f:
         content = f.read()
+
+    # Normalize CRLF
+    normalized = content.replace('\r\n', '\n')
     
-    # 1. Testimonials
-    old_test = '''      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
-              "We were shocked when the AquaPure team showed us photos inside our rooftop tank. There was 4 inches of black silt at the bottom! Within an hour, they scoured it spotlessly clean and UV treated it. The tap water smells sweet and pure again."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <img src="assets/images/avatar-1.jpg" alt="Rajesh Khanna" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Rajesh Khanna</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Villa Owner, Sunnyvale, CA</div>
-            </div>
-          </div>
-        </div>
+    # Pattern to match rtl-toggle buttons that contain the arrow icon
+    pattern = r'(<button class="rtl-toggle[^"]*)[ ]*(items-center)[ ]*([^"]*"[^>]*>)\s*<i class="fas fa-arrow-left text-xs"></i>\s*(<span class="rtl-toggle-text">.*?</span>\s*</button>)'
+    
+    def repl(m):
+        prefix = m.group(1)
+        classes = m.group(3)
+        span_and_end = m.group(4)
+        if 'justify-center' not in classes:
+            classes = ' justify-center ' + classes.lstrip()
+        new_btn = f'{prefix} items-center{classes}\n            {span_and_end}'
+        return new_btn
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
-              "With two toddler twins at home, clean bathing water is non-negotiable. AquaPure’s AMC plan has been a blessing. They automatically send reminders every 4 months and their technicians are extremely courteous and punctual."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <img src="assets/images/avatar-3.jpg" alt="Pooja Menon" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-teal-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Pooja Menon</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Homeowner & Mother, Bay Area</div>
-            </div>
-          </div>
-        </div>
+    new_content, count = re.subn(pattern, repl, normalized)
+    
+    # Also check if there's any remaining <i class="fas fa-arrow-left text-xs"></i> in any rtl-toggle
+    if '<i class="fas fa-arrow-left text-xs"></i>' in new_content:
+        pattern_fallback = r'(<button class="rtl-toggle[^>]*>)\s*<i class="fas fa-arrow-left text-xs"></i>\s*(<span class="rtl-toggle-text">.*?</span>\s*</button>)'
+        def repl2(m):
+            start = m.group(1)
+            rest = m.group(2)
+            if 'justify-center' not in start:
+                start = start.replace('items-center', 'items-center justify-center')
+            return f'{start}\n            {rest}'
+        new_content, count2 = re.subn(pattern_fallback, repl2, new_content)
+        count += count2
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full">
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[6.5rem]">
-              "Our 120-flat apartment society signed up for the AquaPure Commercial AMC. They completed our massive 50,000L underground sump and 8 rooftop tanks in 48 hours with minimal water disruption. Outstanding professional service."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-sky-200 dark:border-sky-800 mt-4">
-            <img src="assets/images/avatar-2.jpg" alt="Anil Sharma" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-sky-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Anil Sharma</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Secretary, Silver Oaks RWA</div>
-            </div>
-          </div>
-        </div>
-      </div>'''
+    if count > 0:
+        with open(fname, 'w', encoding='utf-8', newline='\r\n') as f:
+            f.write(new_content)
+        rtl_updated.append((fname, count))
 
-    new_test = '''      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
-          <div class="flex-1 flex flex-col">
-            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
-              "We were shocked when the AquaPure team showed us photos inside our rooftop tank. There was 4 inches of black silt at the bottom! Within an hour, they scoured it spotlessly clean and UV treated it. The tap water smells sweet and pure again."
-            </p>
-          </div>
-          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
-            <img src="assets/images/avatar-1.jpg" alt="Rajesh Khanna" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-cyan-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Rajesh Khanna</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Villa Owner, Sunnyvale, CA</div>
-            </div>
-          </div>
-        </div>
+print(f"Updated RTL buttons in {len(rtl_updated)} files:")
+for f, c in rtl_updated:
+    print(f"  {f}: {c} button(s)")
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
-          <div class="flex-1 flex flex-col">
-            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
-              "With two toddler twins at home, clean bathing water is non-negotiable. AquaPure’s AMC plan has been a blessing. They automatically send reminders every 4 months and their technicians are extremely courteous and punctual."
-            </p>
-          </div>
-          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
-            <img src="assets/images/avatar-3.jpg" alt="Pooja Menon" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-teal-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Pooja Menon</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Homeowner & Mother, Bay Area</div>
-            </div>
-          </div>
-        </div>
+# 2. Update Desktop nav in all 10 blog-details*.html files
+with open('blog.html', 'r', encoding='utf-8') as f:
+    blog_content = f.read().replace('\r\n', '\n')
 
-        <div class="p-6 rounded-2xl bg-sky-50 dark:bg-[#0c1e33] border border-sky-200 dark:border-sky-800 flex flex-col justify-between h-full shadow-sm">
-          <div class="flex-1 flex flex-col">
-            <div class="flex text-amber-400 gap-1 text-sm mb-3 shrink-0"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="text-xs sm:text-sm font-semibold text-black dark:text-white italic leading-relaxed min-h-[7rem] flex-1 flex items-start">
-              "Our 120-flat apartment society signed up for the AquaPure Commercial AMC. They completed our massive 50,000L underground sump and 8 rooftop tanks in 48 hours with minimal water disruption. Outstanding professional service."
-            </p>
-          </div>
-          <div class="mt-auto pt-4 border-t border-sky-200 dark:border-sky-800 flex items-center gap-3 shrink-0">
-            <img src="assets/images/avatar-2.jpg" alt="Anil Sharma" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-sky-500/50 shadow-sm">
-            <div>
-              <div class="font-bold text-sm text-black dark:text-white">Anil Sharma</div>
-              <div class="text-xs font-semibold text-black dark:text-white">Secretary, Silver Oaks RWA</div>
-            </div>
-          </div>
-        </div>
-      </div>'''
+nav_match = re.search(r'(<nav class="hidden lg:flex items-center gap-4 xl:gap-7.*?)(</nav>)', blog_content, re.DOTALL)
+if not nav_match:
+    raise ValueError("Could not find standard nav in blog.html")
+standard_nav = nav_match.group(0)
 
-    if old_test in content:
-        content = content.replace(old_test, new_test, 1)
-        print("Updated index.html testimonials")
+blog_details_files = sorted(glob.glob('blog-details*.html'))
+nav_updated = []
+
+for fname in blog_details_files:
+    with open(fname, 'r', encoding='utf-8') as f:
+        content = f.read().replace('\r\n', '\n')
+    
+    old_nav_pattern = r'<nav class="hidden lg:flex items-center gap-3\.5 xl:gap-7.*?</nav>'
+    if re.search(old_nav_pattern, content, re.DOTALL):
+        new_content = re.sub(old_nav_pattern, standard_nav, content, flags=re.DOTALL)
+        with open(fname, 'w', encoding='utf-8', newline='\r\n') as f:
+            f.write(new_content)
+        nav_updated.append(fname)
     else:
-        print("Could not find index.html testimonials")
+        print(f"WARNING: Old nav pattern not found in {fname}")
 
-    # 2. FAQ 1st question hidden
-    old_faq1 = '<div class="faq-accordion-content p-5 pt-0'
-    new_faq1 = '<div class="faq-accordion-content hidden p-5 pt-0'
-    if old_faq1 in content:
-        content = content.replace(old_faq1, new_faq1, 1)
-        print("Updated index.html faq hidden")
-
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(content)
-
-update_index()
+print(f"\nUpdated Desktop Navbar in {len(nav_updated)} files:")
+for f in nav_updated:
+    print(f"  {f}")
